@@ -264,7 +264,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.23, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--beyond">
-              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://beyondbarzcic.webflow.io/" alt="Beyond Barz CIC website preview" loading="lazy" />
+              <img src="/images/beyond%20barz.PNG" alt="Beyond Barz CIC website preview" loading="lazy" />
               <span className="project-open" aria-hidden="true">↗</span>
               <span className="project-visual-label">Community · Advocacy website</span>
             </div>
