@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
@@ -313,6 +313,160 @@ export default function Home() {
           <span className="hero-index">Thoughtful work, made with intention.</span>
         </div>
       </section>
+
+      <ServicesTimeline reduceMotion={!!reduceMotion} />
+
     </main>
+  );
+}
+
+const SERVICES = [
+  {
+    number: "01",
+    category: "BUILD",
+    title: "Website Development",
+    description: "Responsive, carefully built websites that give your business a confident home online.",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85",
+    alt: "Modern website layout displayed on a desktop screen",
+    tags: ["Webflow", "Responsive builds", "CMS"]
+  },
+  {
+    number: "02",
+    category: "DESIGN",
+    title: "Website Design & UI/UX",
+    description: "Clear visual systems and intuitive user journeys that make digital experiences feel effortless.",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=85",
+    alt: "Designer arranging interface layouts and visual references",
+    tags: ["Web design", "UI/UX", "Prototyping"]
+  },
+  {
+    number: "03",
+    category: "CREATE",
+    title: "No-Code App Development",
+    description: "Useful web apps, MVPs, and connected digital products built with no-code tools.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
+    alt: "Application analytics dashboard with charts and data",
+    tags: ["MVPs", "Web apps", "Integrations"]
+  },
+  {
+    number: "04",
+    category: "CONNECT",
+    title: "Automation",
+    description: "Smarter workflows that connect your tools, cut repetitive tasks, and give your team time back.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+    alt: "Digital workflow and collaboration tools on a laptop",
+    tags: ["Workflow design", "Integrations", "Process improvement"]
+  },
+  {
+    number: "05",
+    category: "GROW",
+    title: "Search Engine Optimization",
+    description: "Stronger technical foundations and on-page structure to help the right people find your business.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
+    alt: "Website performance analytics on a computer screen",
+    tags: ["On-page SEO", "Technical foundations", "Content structure"]
+  },
+  {
+    number: "06",
+    category: "CREATE",
+    title: "AI UGC Video",
+    description: "Product-led, AI-assisted creator-style videos for brands that need fresh campaign content.",
+    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85",
+    alt: "Video production setup with camera and lighting",
+    tags: ["Product creative", "Social video", "Ad concepts"]
+  },
+  {
+    number: "07",
+    category: "SELL",
+    title: "E-commerce",
+    description: "Storefronts and shopping experiences that present products beautifully and make buying simple.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85",
+    alt: "Customer shopping online using a laptop and payment card",
+    tags: ["Shopify", "Store design", "Product pages"]
+  },
+  {
+    number: "08",
+    category: "PROMOTE",
+    title: "Paid Advertising",
+    description: "Thoughtful campaign setup and creative direction to help brands reach relevant audiences.",
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=85",
+    alt: "Marketing campaign planning and performance analysis",
+    tags: ["Campaign setup", "Creative testing", "Performance"]
+  }
+];
+
+function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
+  const timelineRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 68%", "end 82%"]
+  });
+  const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <section id="services" className="hero-shell services-section" ref={timelineRef}>
+      <motion.div
+        className="services-heading"
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div>
+          <p className="hero-kicker services-eyebrow">What I can help you build</p>
+          <h2 className="services-title">Digital solutions,<br /><span>made with intention.</span></h2>
+        </div>
+        <p className="services-intro">From the first impression to the systems behind the scenes, I help businesses create better digital experiences and move ideas forward.</p>
+      </motion.div>
+
+      <div className="services-timeline">
+        <div className="services-track" aria-hidden="true">
+          <div className="services-track-base" />
+          <motion.div className="services-track-progress" style={{ scaleY: reduceMotion ? 1 : progress }} />
+        </div>
+
+        {SERVICES.map((service, index) => (
+          <motion.article
+            className={`service-entry ${index % 2 === 0 ? "service-entry--left" : "service-entry--right"}`}
+            key={service.number}
+            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.04, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="service-node" aria-hidden="true">
+              <span>{service.number}</span>
+            </div>
+            <div className="service-card">
+              <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
+                <img src={service.image} alt={service.alt} loading="lazy" />
+                <span className="service-image-index">{service.number} <span>/ 08</span></span>
+                <span className="service-image-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </span>
+              </a>
+              <div className="service-copy">
+                <p className="hero-kicker service-category">{service.category} / SERVICE</p>
+                <h3>{service.title}</h3>
+                <p className="service-description">{service.description}</p>
+                <div className="service-tags">
+                  {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+
+      <div className="services-cta">
+        <div>
+          <p className="hero-kicker">Have a project in mind?</p>
+          <h3>Let’s make it <span>happen.</span></h3>
+        </div>
+        <a href="mailto:" className="services-cta-link">Start a conversation
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </a>
+      </div>
+    </section>
   );
 }
