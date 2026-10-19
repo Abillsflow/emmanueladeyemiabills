@@ -17,7 +17,7 @@ export default function Home() {
           <div className="hero-display">PORTFOLIO</div>
         </div>
 
-        <div className="relative z-10 grid items-center gap-7 md:grid-cols-[.85fr_1.1fr_.52fr] md:gap-8">
+        <div className="relative z-10 grid items-center gap-7 md:grid-cols-[.9fr_1.28fr_.48fr] md:gap-6 lg:gap-8">
           <div className="order-2 pb-3 md:order-1 md:pb-0">
             <p className="hero-script mb-4 text-[27px] text-[#777a70] sm:text-[32px]">Hello, I’m</p>
             <h1 className="hero-name">Emmanuel<br />Adeyemi<span style={{ color: "var(--accent)" }}>.</span></h1>
@@ -28,7 +28,7 @@ export default function Home() {
             <div className="mt-7 flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Based in Nigeria · Working worldwide</div>
           </div>
 
-          <div className="hero-portrait hero-portrait--blend order-1 h-[380px] md:order-2 md:h-[min(650px,78vh)]">
+          <div className="hero-portrait hero-portrait--blend order-1 h-[400px] md:order-2 md:h-[min(700px,82vh)] md:-mx-5 lg:-mx-8">
             <img
               src="/images/abills-portrait.png"
               alt="Emmanuel Adeyemi, also known as Abills"
