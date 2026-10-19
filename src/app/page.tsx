@@ -396,33 +396,6 @@ const SERVICES = [
 ];
 
 function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const [activeService, setActiveService] = useState(0);
-
-  const moveGallery = (direction: number) => {
-    const gallery = galleryRef.current;
-    if (!gallery) return;
-    const card = gallery.querySelector<HTMLElement>(".service-gallery-card");
-    if (!card) return;
-    const gap = parseFloat(getComputedStyle(gallery).columnGap || getComputedStyle(gallery).gap || "24");
-    gallery.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: reduceMotion ? "auto" : "smooth" });
-  };
-
-  const updateActive = () => {
-    const gallery = galleryRef.current;
-    if (!gallery) return;
-    const cards = Array.from(gallery.querySelectorAll<HTMLElement>(".service-gallery-card"));
-    if (!cards.length) return;
-    const center = gallery.scrollLeft + gallery.clientWidth * 0.38;
-    let nearest = 0;
-    let distance = Number.POSITIVE_INFINITY;
-    cards.forEach((card, index) => {
-      const nextDistance = Math.abs(card.offsetLeft - center);
-      if (nextDistance < distance) { distance = nextDistance; nearest = index; }
-    });
-    setActiveService(nearest);
-  };
-
   return (
     <section id="services" className="hero-shell services-section">
       <motion.div
@@ -436,59 +409,46 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
           <p className="hero-kicker services-eyebrow">What I can help you build</p>
           <h2 className="services-title">Digital solutions,<br /><span>made with intention.</span></h2>
         </div>
-        <p className="services-intro">Scroll through the services. A considered mix of design, development and digital growth, built around what your business needs next.</p>
+        <p className="services-intro">A considered mix of design, development and digital growth, built around what your business needs next.</p>
       </motion.div>
 
-      <div className="services-gallery-shell">
-        <div className="services-gallery-topline">
-          <span className="hero-index">SERVICES / 08 CAPABILITIES</span>
-          <div className="services-gallery-controls">
-            <span className="services-gallery-count">{String(activeService + 1).padStart(2, "0")} <span>/ 08</span></span>
-            <button type="button" className="services-gallery-arrow" aria-label="Previous service" onClick={() => moveGallery(-1)} disabled={activeService === 0}>
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 8H4M7 4 3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </button>
-            <button type="button" className="services-gallery-arrow" aria-label="Next service" onClick={() => moveGallery(1)} disabled={activeService === SERVICES.length - 1}>
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </button>
-          </div>
-        </div>
-
-        <div className="services-gallery-track" ref={galleryRef} onScroll={updateActive}>
-          {SERVICES.map((service, index) => (
+      <div className="services-timeline">
+        <div className="services-timeline-line" aria-hidden="true" />
+        {SERVICES.map((service, index) => {
+          const side = index % 2 === 0 ? "left" : "right";
+          return (
             <motion.article
-              className="service-gallery-card"
+              className={`service-entry service-entry--${side}`}
               key={service.number}
               initial={reduceMotion ? false : { opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.08 }}
-              transition={{ duration: 0.65, delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.24), ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.04, ease: [0.22, 1, 0.36, 1] }}
             >
-              <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-                <img src={service.image} alt={service.alt} loading="lazy" />
-                <span className="service-image-index">{service.number} <span>/ 08</span></span>
-                <span className="service-image-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </span>
-              </a>
-              <div className="service-copy">
-                <div className="service-title-row">
-                  <p className="hero-kicker service-category">{service.category} <span>/ SERVICE</span></p>
-                  <span className="service-card-index">{service.number}</span>
-                </div>
-                <h3>{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <div className="service-tags">
-                  {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              <span className="service-node" aria-hidden="true">{service.number}</span>
+              <div className="service-entry-inner">
+                <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
+                  <img src={service.image} alt={service.alt} loading="lazy" />
+                  <span className="service-image-index">{service.number} <span>/ 08</span></span>
+                  <span className="service-image-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </span>
+                </a>
+                <div className="service-copy">
+                  <div className="service-title-row">
+                    <p className="hero-kicker service-category">{service.category} <span>/ SERVICE</span></p>
+                    <span className="service-card-index">{service.number}</span>
+                  </div>
+                  <h3>{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  <div className="service-tags">
+                    {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
                 </div>
               </div>
             </motion.article>
-          ))}
-        </div>
-
-        <div className="services-gallery-progress" aria-hidden="true">
-          <span style={{ width: `${((activeService + 1) / SERVICES.length) * 100}%` }} />
-        </div>
-        <p className="services-gallery-hint">Swipe or scroll to explore <span aria-hidden="true">→</span></p>
+          );
+        })}
       </div>
 
       <motion.div
