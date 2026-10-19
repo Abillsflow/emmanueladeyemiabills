@@ -166,8 +166,9 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   white-space: nowrap;
 }
-.projects-all-link span { color: var(--accent); font-size: 18px; transition: transform .2s ease; }
-.projects-all-link:hover span { transform: translate(3px, -3px); }
+.projects-all-link .arrow-icon { display: inline-flex; color: var(--accent); transition: transform .2s ease; }
+.arrow-icon svg { display: block; width: 14px; height: 14px; }
+.projects-all-link:hover .arrow-icon { transform: translate(3px, -3px); }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -227,6 +228,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 17px;
   transition: background .25s ease, color .25s ease, transform .25s ease;
 }
+.project-open svg { display: block; width: 15px; height: 15px; }
 .project-card:hover .project-open { background: var(--paper); color: var(--ink); transform: rotate(45deg); }
 .project-meta {
   display: flex;
@@ -258,7 +260,8 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: .12em;
   text-transform: uppercase;
 }
-.project-arrow { color: var(--muted); font-size: 21px; transition: transform .2s ease, color .2s ease; }
+.project-arrow { display: inline-flex; color: var(--muted); transition: transform .2s ease, color .2s ease; }
+.project-arrow svg { display: block; width: 17px; height: 17px; }
 .project-card:hover .project-arrow { color: var(--accent); transform: translate(3px, -3px); }
 .projects-footer {
   display: flex;
