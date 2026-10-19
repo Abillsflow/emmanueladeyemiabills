@@ -396,12 +396,35 @@ const SERVICES = [
 ];
 
 function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
-  const timelineRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start 68%", "end 82%"] });
-  const progress = useSpring(scrollYProgress, { stiffness: 85, damping: 26, mass: 0.3, restDelta: 0.001 });
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [activeService, setActiveService] = useState(0);
+
+  const moveGallery = (direction: number) => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+    const card = gallery.querySelector<HTMLElement>(".service-gallery-card");
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(gallery).columnGap || getComputedStyle(gallery).gap || "24");
+    gallery.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: reduceMotion ? "auto" : "smooth" });
+  };
+
+  const updateActive = () => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+    const cards = Array.from(gallery.querySelectorAll<HTMLElement>(".service-gallery-card"));
+    if (!cards.length) return;
+    const center = gallery.scrollLeft + gallery.clientWidth * 0.38;
+    let nearest = 0;
+    let distance = Number.POSITIVE_INFINITY;
+    cards.forEach((card, index) => {
+      const nextDistance = Math.abs(card.offsetLeft - center);
+      if (nextDistance < distance) { distance = nextDistance; nearest = index; }
+    });
+    setActiveService(nearest);
+  };
 
   return (
-    <section id="services" className="hero-shell services-section" ref={timelineRef}>
+    <section id="services" className="hero-shell services-section">
       <motion.div
         className="services-heading"
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
@@ -413,28 +436,33 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
           <p className="hero-kicker services-eyebrow">What I can help you build</p>
           <h2 className="services-title">Digital solutions,<br /><span>made with intention.</span></h2>
         </div>
-        <p className="services-intro">A considered mix of design, development and digital growth — tailored to help ambitious brands move forward.</p>
+        <p className="services-intro">Scroll through the services. A considered mix of design, development and digital growth, built around what your business needs next.</p>
       </motion.div>
 
-      <div className="services-timeline">
-        <div className="services-track" aria-hidden="true">
-          <div className="services-track-base" />
-          <motion.div className="services-track-progress" style={{ scaleY: reduceMotion ? 1 : progress }} />
+      <div className="services-gallery-shell">
+        <div className="services-gallery-topline">
+          <span className="hero-index">SERVICES / 08 CAPABILITIES</span>
+          <div className="services-gallery-controls">
+            <span className="services-gallery-count">{String(activeService + 1).padStart(2, "0")} <span>/ 08</span></span>
+            <button type="button" className="services-gallery-arrow" aria-label="Previous service" onClick={() => moveGallery(-1)} disabled={activeService === 0}>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 8H4M7 4 3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+            <button type="button" className="services-gallery-arrow" aria-label="Next service" onClick={() => moveGallery(1)} disabled={activeService === SERVICES.length - 1}>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+          </div>
         </div>
 
-        {SERVICES.map((service, index) => (
-          <motion.article
-            className={`service-entry ${index % 2 === 0 ? "service-entry--left" : "service-entry--right"}`}
-            key={service.number}
-            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.14 }}
-            transition={{ duration: 0.75, delay: reduceMotion ? 0 : (index % 2) * 0.07, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.div className="service-node" aria-hidden="true" initial={reduceMotion ? false : { opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, ease: "easeOut" }}>
-              <span>{service.number}</span>
-            </motion.div>
-            <div className="service-card">
+        <div className="services-gallery-track" ref={galleryRef} onScroll={updateActive}>
+          {SERVICES.map((service, index) => (
+            <motion.article
+              className="service-gallery-card"
+              key={service.number}
+              initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.08 }}
+              transition={{ duration: 0.65, delay: reduceMotion ? 0 : Math.min(index * 0.045, 0.24), ease: [0.22, 1, 0.36, 1] }}
+            >
               <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
                 <img src={service.image} alt={service.alt} loading="lazy" />
                 <span className="service-image-index">{service.number} <span>/ 08</span></span>
@@ -453,9 +481,14 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
                   {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
               </div>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="services-gallery-progress" aria-hidden="true">
+          <span style={{ width: `${((activeService + 1) / SERVICES.length) * 100}%` }} />
+        </div>
+        <p className="services-gallery-hint">Swipe or scroll to explore <span aria-hidden="true">→</span></p>
       </div>
 
       <motion.div
