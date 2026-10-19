@@ -326,8 +326,8 @@ const SERVICES = [
     category: "BUILD",
     title: "Website Development",
     description: "Responsive, carefully built websites that give your business a confident home online.",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85",
-    alt: "Modern website layout displayed on a desktop screen",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
+    alt: "Freelancer working on a website at a clean desktop workspace",
     tags: ["Webflow", "Responsive builds", "CMS"]
   },
   {
@@ -335,8 +335,8 @@ const SERVICES = [
     category: "DESIGN",
     title: "Website Design & UI/UX",
     description: "Clear visual systems and intuitive user journeys that make digital experiences feel effortless.",
-    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=85",
-    alt: "Designer arranging interface layouts and visual references",
+    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=85",
+    alt: "Creative designer reviewing digital layouts at a workstation",
     tags: ["Web design", "UI/UX", "Prototyping"]
   },
   {
@@ -344,8 +344,8 @@ const SERVICES = [
     category: "CREATE",
     title: "No-Code App Development",
     description: "Useful web apps, MVPs, and connected digital products built with no-code tools.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
-    alt: "Application analytics dashboard with charts and data",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+    alt: "Digital professional working across a laptop and online tools",
     tags: ["MVPs", "Web apps", "Integrations"]
   },
   {
@@ -353,8 +353,8 @@ const SERVICES = [
     category: "CONNECT",
     title: "Automation",
     description: "Smarter workflows that connect your tools, cut repetitive tasks, and give your team time back.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
-    alt: "Digital workflow and collaboration tools on a laptop",
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
+    alt: "Creative team collaborating around a laptop in a modern workspace",
     tags: ["Workflow design", "Integrations", "Process improvement"]
   },
   {
@@ -363,7 +363,7 @@ const SERVICES = [
     title: "Search Engine Optimization",
     description: "Stronger technical foundations and on-page structure to help the right people find your business.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
-    alt: "Website performance analytics on a computer screen",
+    alt: "Freelancer reviewing website analytics and performance",
     tags: ["On-page SEO", "Technical foundations", "Content structure"]
   },
   {
@@ -371,8 +371,8 @@ const SERVICES = [
     category: "CREATE",
     title: "AI UGC Video",
     description: "Product-led, AI-assisted creator-style videos for brands that need fresh campaign content.",
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85",
-    alt: "Video production setup with camera and lighting",
+    image: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1200&q=85",
+    alt: "Content creator working on a video production setup",
     tags: ["Product creative", "Social video", "Ad concepts"]
   },
   {
@@ -380,8 +380,8 @@ const SERVICES = [
     category: "SELL",
     title: "E-commerce",
     description: "Storefronts and shopping experiences that present products beautifully and make buying simple.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85",
-    alt: "Customer shopping online using a laptop and payment card",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+    alt: "Professional planning an online store and digital customer experience",
     tags: ["Shopify", "Store design", "Product pages"]
   },
   {
@@ -389,8 +389,8 @@ const SERVICES = [
     category: "PROMOTE",
     title: "Paid Advertising",
     description: "Thoughtful campaign setup and creative direction to help brands reach relevant audiences.",
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=85",
-    alt: "Marketing campaign planning and performance analysis",
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
+    alt: "Digital marketer collaborating on campaign strategy at a desk",
     tags: ["Campaign setup", "Creative testing", "Performance"]
   }
 ];
