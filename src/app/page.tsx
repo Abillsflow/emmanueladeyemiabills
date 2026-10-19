@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
@@ -401,7 +401,8 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
     target: timelineRef,
     offset: ["start 68%", "end 82%"]
   });
-  const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const rawProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const progress = useSpring(rawProgress, { stiffness: 90, damping: 28, mass: 0.25, restDelta: 0.001 });
 
   return (
     <section id="services" className="hero-shell services-section" ref={timelineRef}>
@@ -429,17 +430,17 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
           <motion.article
             className={`service-entry ${index % 2 === 0 ? "service-entry--left" : "service-entry--right"}`}
             key={service.number}
-            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.04, ease: [0.22, 1, 0.36, 1] }}
+            initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.985 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{ duration: 0.9, delay: reduceMotion ? 0 : (index % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="service-node" aria-hidden="true">
+            <motion.div className="service-node" aria-hidden="true" initial={reduceMotion ? false : { opacity: 0, scale: 0.72 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}>
               <span>{service.number}</span>
-            </div>
+            </motion.div>
             <div className="service-card">
               <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-                <img src={service.image} alt={service.alt} loading="lazy" />
+                <motion.img src={service.image} alt={service.alt} loading="lazy" initial={reduceMotion ? false : { scale: 1.1, opacity: 0.72 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }} />
                 <span className="service-image-index">{service.number} <span>/ 08</span></span>
                 <span className="service-image-arrow" aria-hidden="true">
                   <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
