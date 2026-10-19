@@ -192,6 +192,98 @@ export default function Home() {
           <span className="hero-index">Scroll to explore ↓</span>
         </motion.div>
       </section>
+
+      <section id="selected-projects" className="hero-shell projects-section">
+        <div className="projects-heading">
+          <div>
+            <p className="hero-kicker projects-eyebrow">A selection of recent work</p>
+            <h2 className="projects-title">Selected <span>projects</span></h2>
+          </div>
+          <a className="projects-all-link" href="mailto:">Have a project in mind? <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div className="projects-grid">
+          <motion.a
+            href="https://www.closedhq.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-card"
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.65, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="project-visual project-visual--closedhq">
+              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.closedhq.com/" alt="ClosedHQ real estate marketplace website preview" loading="lazy" />
+              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-visual-label">Real estate · Digital platform</span>
+            </div>
+            <div className="project-meta">
+              <span className="project-number">01</span>
+              <div className="project-meta-copy">
+                <h3>ClosedHQ</h3>
+                <p>Real estate marketplace</p>
+              </div>
+              <span className="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </motion.a>
+
+          <motion.a
+            href="https://www.apexdispensingsystems.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-card"
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.65, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="project-visual project-visual--apex">
+              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.apexdispensingsystems.com/" alt="Apex Dispensing Systems website preview" loading="lazy" />
+              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-visual-label">Industrial · Product website</span>
+            </div>
+            <div className="project-meta">
+              <span className="project-number">02</span>
+              <div className="project-meta-copy">
+                <h3>Apex Dispensing Systems</h3>
+                <p>Industrial product experience</p>
+              </div>
+              <span className="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </motion.a>
+
+          <motion.a
+            href="https://beyondbarzcic.webflow.io/"
+            target="_blank"
+            rel="noreferrer"
+            className="project-card"
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.65, delay: 0.23, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="project-visual project-visual--beyond">
+              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://beyondbarzcic.webflow.io/" alt="Beyond Barz CIC website preview" loading="lazy" />
+              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-visual-label">Community · Advocacy website</span>
+            </div>
+            <div className="project-meta">
+              <span className="project-number">03</span>
+              <div className="project-meta-copy">
+                <h3>Beyond Barz CIC</h3>
+                <p>Community and advocacy</p>
+              </div>
+              <span className="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </motion.a>
+        </div>
+
+        <div className="projects-footer">
+          <span className="hero-index">SELECTED WORK / 2026</span>
+          <span className="hero-index">Strategy, design & digital development</span>
+        </div>
+      </section>
     </main>
   );
 }
