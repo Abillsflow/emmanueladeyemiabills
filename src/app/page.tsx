@@ -396,8 +396,12 @@ const SERVICES = [
 ];
 
 function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
+  const timelineRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start 68%", "end 82%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 85, damping: 26, mass: 0.3, restDelta: 0.001 });
+
   return (
-    <section id="services" className="hero-shell services-section">
+    <section id="services" className="hero-shell services-section" ref={timelineRef}>
       <motion.div
         className="services-heading"
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
@@ -412,32 +416,42 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
         <p className="services-intro">A considered mix of design, development and digital growth — tailored to help ambitious brands move forward.</p>
       </motion.div>
 
-      <div className="services-grid">
+      <div className="services-timeline">
+        <div className="services-track" aria-hidden="true">
+          <div className="services-track-base" />
+          <motion.div className="services-track-progress" style={{ scaleY: reduceMotion ? 1 : progress }} />
+        </div>
+
         {SERVICES.map((service, index) => (
           <motion.article
-            className="service-card"
+            className={`service-entry ${index % 2 === 0 ? "service-entry--left" : "service-entry--right"}`}
             key={service.number}
-            initial={reduceMotion ? false : { opacity: 0, y: 26 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.12 }}
-            transition={{ duration: 0.7, delay: reduceMotion ? 0 : (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.14 }}
+            transition={{ duration: 0.75, delay: reduceMotion ? 0 : (index % 2) * 0.07, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-              <img src={service.image} alt={service.alt} loading="lazy" />
-              <span className="service-image-index">{service.number} <span>/ 08</span></span>
-              <span className="service-image-arrow" aria-hidden="true">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              </span>
-            </a>
-            <div className="service-copy">
-              <div className="service-title-row">
-                <p className="hero-kicker service-category">{service.category} <span>/ SERVICE</span></p>
-                <span className="service-card-index">{service.number}</span>
-              </div>
-              <h3>{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-              <div className="service-tags">
-                {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+            <motion.div className="service-node" aria-hidden="true" initial={reduceMotion ? false : { opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, ease: "easeOut" }}>
+              <span>{service.number}</span>
+            </motion.div>
+            <div className="service-card">
+              <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
+                <img src={service.image} alt={service.alt} loading="lazy" />
+                <span className="service-image-index">{service.number} <span>/ 08</span></span>
+                <span className="service-image-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </span>
+              </a>
+              <div className="service-copy">
+                <div className="service-title-row">
+                  <p className="hero-kicker service-category">{service.category} <span>/ SERVICE</span></p>
+                  <span className="service-card-index">{service.number}</span>
+                </div>
+                <h3>{service.title}</h3>
+                <p className="service-description">{service.description}</p>
+                <div className="service-tags">
+                  {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
               </div>
             </div>
           </motion.article>
