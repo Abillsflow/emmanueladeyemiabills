@@ -396,16 +396,8 @@ const SERVICES = [
 ];
 
 function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
-  const timelineRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start 68%", "end 82%"]
-  });
-  const rawProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const progress = useSpring(rawProgress, { stiffness: 90, damping: 28, mass: 0.25, restDelta: 0.001 });
-
   return (
-    <section id="services" className="hero-shell services-section" ref={timelineRef}>
+    <section id="services" className="hero-shell services-section">
       <motion.div
         className="services-heading"
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
@@ -417,49 +409,48 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
           <p className="hero-kicker services-eyebrow">What I can help you build</p>
           <h2 className="services-title">Digital solutions,<br /><span>made with intention.</span></h2>
         </div>
-        <p className="services-intro">From the first impression to the systems behind the scenes, I help businesses create better digital experiences and move ideas forward.</p>
+        <p className="services-intro">A considered mix of design, development and digital growth — tailored to help ambitious brands move forward.</p>
       </motion.div>
 
-      <div className="services-timeline">
-        <div className="services-track" aria-hidden="true">
-          <div className="services-track-base" />
-          <motion.div className="services-track-progress" style={{ scaleY: reduceMotion ? 1 : progress }} />
-        </div>
-
+      <div className="services-grid">
         {SERVICES.map((service, index) => (
           <motion.article
-            className={`service-entry ${index % 2 === 0 ? "service-entry--left" : "service-entry--right"}`}
+            className="service-card"
             key={service.number}
-            initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.985 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{ duration: 0.9, delay: reduceMotion ? 0 : (index % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={reduceMotion ? false : { opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.7, delay: reduceMotion ? 0 : (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div className="service-node" aria-hidden="true" initial={reduceMotion ? false : { opacity: 0, scale: 0.72 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}>
-              <span>{service.number}</span>
-            </motion.div>
-            <div className="service-card">
-              <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-                <motion.img src={service.image} alt={service.alt} loading="lazy" initial={reduceMotion ? false : { scale: 1.1, opacity: 0.72 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }} />
-                <span className="service-image-index">{service.number} <span>/ 08</span></span>
-                <span className="service-image-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </span>
-              </a>
-              <div className="service-copy">
-                <p className="hero-kicker service-category">{service.category} / SERVICE</p>
-                <h3>{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <div className="service-tags">
-                  {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                </div>
+            <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
+              <img src={service.image} alt={service.alt} loading="lazy" />
+              <span className="service-image-index">{service.number} <span>/ 08</span></span>
+              <span className="service-image-arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </span>
+            </a>
+            <div className="service-copy">
+              <div className="service-title-row">
+                <p className="hero-kicker service-category">{service.category} <span>/ SERVICE</span></p>
+                <span className="service-card-index">{service.number}</span>
+              </div>
+              <h3>{service.title}</h3>
+              <p className="service-description">{service.description}</p>
+              <div className="service-tags">
+                {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
             </div>
           </motion.article>
         ))}
       </div>
 
-      <div className="services-cta">
+      <motion.div
+        className="services-cta"
+        initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div>
           <p className="hero-kicker">Have a project in mind?</p>
           <h3>Let’s make it <span>happen.</span></h3>
@@ -467,7 +458,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
         <a href="mailto:" className="services-cta-link">Start a conversation
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }
