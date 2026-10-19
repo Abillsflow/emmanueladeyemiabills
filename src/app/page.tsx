@@ -95,7 +95,7 @@ export default function Home() {
           <motion.span {...reveal(0.12)} className="hero-kicker">Digital designer & developer</motion.span>
           <motion.span {...reveal(0.18)} className="flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Available for freelance</motion.span>
         </div>
-        <a className="hero-kicker sm:hidden" href="mailto:">Let’s connect ↗</a>
+        <a className="hero-kicker sm:hidden hero-connect" href="mailto:">Let’s connect <span aria-hidden="true">↗</span></a>
       </header>
 
       <section id="home" className="hero-shell hero-main relative flex flex-col justify-center pb-12 pt-12 md:pb-16 md:pt-16">
@@ -141,7 +141,7 @@ export default function Home() {
               transition={{ duration: 0.65, delay: 0.95, ease: "easeOut" }}
             >
               <span className="hero-kicker">Design with intention</span>
-              <span className="text-xl text-[#53574d]">✳</span>
+              <span className="hero-spark" aria-hidden="true" />
             </motion.div>
           </motion.div>
 
