@@ -289,8 +289,8 @@ export default function Home() {
         <div className="about-intro">
           <motion.div className="about-heading" initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
             <p className="hero-kicker about-eyebrow">A little about me</p>
-            <h2>Hi there, I’m <span>Abills.</span></h2>
-            <p className="about-name-pill">Also known as Emmanuel Adeyemi</p>
+            <h2>Hi there, I’m <span>Emmanuel Adeyemi.</span></h2>
+            <p className="about-name-pill">Also known as Abills</p>
           </motion.div>
           <motion.div className="about-copy" initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
             <p>I’m a digital designer and creator who enjoys turning ideas into clear, thoughtful online experiences.</p>
