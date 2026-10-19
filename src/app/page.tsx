@@ -1,11 +1,74 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
-const rise = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
-};
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+
+function ScrambleText({
+  text,
+  accentFrom,
+  delay = 0,
+  reducedMotion,
+}: {
+  text: string;
+  accentFrom: number;
+  delay?: number;
+  reducedMotion: boolean;
+}) {
+  const [display, setDisplay] = useState(text);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setDisplay(text);
+      return;
+    }
+
+    let frame = 0;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const start = setTimeout(() => {
+      setDisplay(
+        [...text]
+          .map((char) => (char === " " || char === "-" ? char : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]))
+          .join("")
+      );
+
+      interval = setInterval(() => {
+        frame += 1;
+        const revealed = Math.floor(frame / 2);
+        setDisplay(
+          [...text]
+            .map((char, index) => {
+              if (char === " " || char === "-") return char;
+              if (index < revealed) return char;
+              return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+            })
+            .join("")
+        );
+
+        if (revealed >= text.length) {
+          if (interval) clearInterval(interval);
+          setDisplay(text);
+        }
+      }, 42);
+    }, delay * 1000);
+
+    return () => {
+      clearTimeout(start);
+      if (interval) clearInterval(interval);
+    };
+  }, [text, delay, reducedMotion]);
+
+  return (
+    <span aria-label={text} className="inline-block" aria-live="off">
+      {display.split("").map((char, index) => (
+        <span key={index} className={index >= accentFrom ? "text-[#9ca58e]" : undefined} aria-hidden="true">
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function Home() {
   const reduceMotion = useReducedMotion();
@@ -77,13 +140,27 @@ export default function Home() {
             <p className="hero-kicker max-w-[190px] leading-[1.8]">Turning ideas into useful, considered digital experiences.</p>
             <div className="hero-rule" />
             <div>
-              <p className="text-[34px] font-medium tracking-[-.07em]">Web<span className="text-[#9ca58e]">flow</span></p>
-              <p className="hero-kicker mt-1">Design & development</p>
+              <h2 className="text-[34px] font-medium tracking-[-.07em]">
+                <ScrambleText text="Webflow" accentFrom={4} delay={0.78} reducedMotion={!!reduceMotion} />
+              </h2>
+              <motion.p
+                className="hero-kicker mt-1"
+                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: reduceMotion ? 0 : 1.48, ease: "easeOut" }}
+              >Design & development</motion.p>
             </div>
             <div className="hero-rule" />
             <div>
-              <p className="text-[34px] font-medium tracking-[-.07em]">E-com<span className="text-[#9ca58e]">merce</span></p>
-              <p className="hero-kicker mt-1">Brand-led storefronts</p>
+              <h2 className="text-[34px] font-medium tracking-[-.07em]">
+                <ScrambleText text="E-commerce" accentFrom={5} delay={0.98} reducedMotion={!!reduceMotion} />
+              </h2>
+              <motion.p
+                className="hero-kicker mt-1"
+                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: reduceMotion ? 0 : 1.68, ease: "easeOut" }}
+              >Brand-led storefronts</motion.p>
             </div>
             <div className="hero-rule" />
             <div className="pt-1">
