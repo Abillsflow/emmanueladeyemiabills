@@ -310,3 +310,135 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .project-visual img, .project-open, .project-arrow, .projects-all-link span { transition: none !important; }
 }
+
+
+/* About section — editorial layout */
+.about-section {
+  padding-top: clamp(76px, 10vw, 138px);
+  padding-bottom: clamp(48px, 8vw, 100px);
+  overflow: hidden;
+}
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+  gap: clamp(36px, 7vw, 100px);
+  align-items: start;
+}
+.about-heading h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7.2vw, 94px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.065em;
+}
+.about-heading h2 span { font-style: italic; }
+.about-eyebrow { margin: 0 0 20px; }
+.about-name-pill {
+  display: inline-flex;
+  align-items: center;
+  margin: 28px 0 0;
+  padding: 9px 17px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: #69715f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(17px, 2vw, 25px);
+  line-height: 1.2;
+}
+.about-copy {
+  max-width: 440px;
+  justify-self: end;
+  padding-top: 34px;
+  color: #343630;
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.55;
+}
+.about-copy p { margin: 0 0 20px; }
+.about-copy p:last-child { margin-bottom: 0; }
+.about-gallery {
+  position: relative;
+  min-height: clamp(420px, 53vw, 680px);
+  margin-top: clamp(48px, 8vw, 112px);
+}
+.about-shape {
+  position: absolute;
+  z-index: 0;
+  width: clamp(280px, 42vw, 560px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #b7c3a9;
+}
+.about-photo {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  padding: 0 0 13px;
+  background: var(--paper);
+  border: 1px solid rgba(36, 39, 34, .08);
+  box-shadow: 0 18px 55px rgba(38, 39, 32, .09);
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-photo figcaption {
+  padding: 12px 13px 0;
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.about-photo figcaption span { color: var(--muted); }
+.about-photo--portrait {
+  left: 9%;
+  top: 16%;
+  width: min(37%, 430px);
+  aspect-ratio: .78 / 1;
+  transform: rotate(-3deg);
+}
+.about-photo--portrait img { object-position: center 30%; filter: grayscale(1); }
+.about-photo--studio {
+  right: 10%;
+  top: 25%;
+  width: min(29%, 340px);
+  aspect-ratio: .72 / 1;
+  transform: rotate(2.5deg);
+}
+.about-photo--studio img { object-position: center 30%; }
+.about-bottomline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 760px) {
+  .about-section { padding-top: 62px; padding-bottom: 42px; }
+  .about-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .about-heading h2 { font-size: clamp(43px, 11.5vw, 64px); line-height: 1.02; }
+  .about-eyebrow { margin-bottom: 14px; }
+  .about-name-pill { margin-top: 18px; padding: 8px 13px; font-size: 18px; }
+  .about-copy { justify-self: start; max-width: 100%; padding-top: 0; font-size: 14px; line-height: 1.65; }
+  .about-copy p { margin-bottom: 14px; }
+  .about-gallery { min-height: 410px; margin-top: 26px; }
+  .about-shape { width: min(78vw, 340px); top: 8px; }
+  .about-photo { padding-bottom: 10px; }
+  .about-photo figcaption { padding: 9px 8px 0; font-size: 8px; letter-spacing: .05em; }
+  .about-photo--portrait { left: 2%; top: 16%; width: 56%; aspect-ratio: .76 / 1; }
+  .about-photo--studio { right: 2%; top: 31%; width: 43%; aspect-ratio: .72 / 1; }
+  .about-bottomline { margin-top: 4px; align-items: flex-start; flex-direction: column; gap: 8px; }
+}
+@media (max-width: 380px) {
+  .about-gallery { min-height: 350px; }
+  .about-photo--portrait { left: 0; width: 57%; }
+  .about-photo--studio { right: 0; width: 44%; top: 30%; }
+  .about-photo figcaption { font-size: 7px; }
+}
