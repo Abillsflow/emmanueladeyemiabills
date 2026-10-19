@@ -37,11 +37,42 @@ a { color: inherit; text-decoration: none; }
 .hero-portrait {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 52% 32%, rgba(255,255,255,.9) 0, rgba(255,255,255,.25) 24%, transparent 44%),
-    linear-gradient(145deg, #e5e2d8 0%, #d8d8cc 48%, #c8cabb 100%);
+  overflow: visible;
+  min-width: 0;
+  background: transparent;
 }
+.hero-portrait--blend {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.hero-portrait-image {
+  position: absolute;
+  z-index: 1;
+  inset: -2% -12% 0;
+  width: 124%;
+  height: 102%;
+  object-fit: contain;
+  object-position: center bottom;
+  mix-blend-mode: multiply;
+  filter: saturate(.96) contrast(.98);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,.88) 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,.88) 91%, transparent 100%);
+}
+.hero-portrait-caption {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-portrait-caption .hero-kicker { color: var(--muted); }
+
 .portrait-glow { position: absolute; width: 70%; aspect-ratio: 1; left: 15%; top: 13%; border-radius: 50%; background: rgba(255,255,255,.32); filter: blur(30px); }
 .portrait-head {
   position: absolute; z-index: 2; left: 37%; top: 16%; width: 29%; height: 29%;
