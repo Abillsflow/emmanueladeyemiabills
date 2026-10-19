@@ -359,7 +359,7 @@ a { color: inherit; text-decoration: none; }
 .about-gallery {
   position: relative;
   min-height: clamp(420px, 53vw, 680px);
-  margin-top: clamp(48px, 8vw, 112px);
+  margin-top: clamp(30px, 4vw, 58px);
 }
 .about-shape {
   position: absolute;
@@ -396,17 +396,17 @@ a { color: inherit; text-decoration: none; }
 }
 .about-photo figcaption span { color: var(--muted); }
 .about-photo--portrait {
-  left: 9%;
-  top: 16%;
-  width: min(37%, 430px);
+  left: 16%;
+  top: 13%;
+  width: min(34%, 400px);
   aspect-ratio: .78 / 1;
   transform: rotate(-3deg);
 }
 .about-photo--portrait img { object-position: center 30%; filter: grayscale(1); }
 .about-photo--studio {
-  right: 10%;
-  top: 25%;
-  width: min(29%, 340px);
+  right: 18%;
+  top: 20%;
+  width: min(27%, 320px);
   aspect-ratio: .72 / 1;
   transform: rotate(2.5deg);
 }
@@ -428,17 +428,17 @@ a { color: inherit; text-decoration: none; }
   .about-name-pill { margin-top: 18px; padding: 8px 13px; font-size: 18px; }
   .about-copy { justify-self: start; max-width: 100%; padding-top: 0; font-size: 14px; line-height: 1.65; }
   .about-copy p { margin-bottom: 14px; }
-  .about-gallery { min-height: 410px; margin-top: 26px; }
+  .about-gallery { min-height: 410px; margin-top: 22px; }
   .about-shape { width: min(78vw, 340px); top: 8px; }
   .about-photo { padding-bottom: 10px; }
   .about-photo figcaption { padding: 9px 8px 0; font-size: 8px; letter-spacing: .05em; }
-  .about-photo--portrait { left: 2%; top: 16%; width: 56%; aspect-ratio: .76 / 1; }
-  .about-photo--studio { right: 2%; top: 31%; width: 43%; aspect-ratio: .72 / 1; }
+  .about-photo--portrait { left: 7%; top: 15%; width: 53%; aspect-ratio: .76 / 1; }
+  .about-photo--studio { right: 7%; top: 29%; width: 41%; aspect-ratio: .72 / 1; }
   .about-bottomline { margin-top: 4px; align-items: flex-start; flex-direction: column; gap: 8px; }
 }
 @media (max-width: 380px) {
   .about-gallery { min-height: 350px; }
-  .about-photo--portrait { left: 0; width: 57%; }
-  .about-photo--studio { right: 0; width: 44%; top: 30%; }
+  .about-photo--portrait { left: 3%; width: 56%; }
+  .about-photo--studio { right: 3%; width: 43%; top: 28%; }
   .about-photo figcaption { font-size: 7px; }
 }
