@@ -95,7 +95,11 @@ export default function Home() {
           <motion.span {...reveal(0.12)} className="hero-kicker">Digital designer & developer</motion.span>
           <motion.span {...reveal(0.18)} className="flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Available for freelance</motion.span>
         </div>
-        <a className="hero-kicker sm:hidden hero-connect" href="mailto:">Let’s connect <span aria-hidden="true">↗</span></a>
+        <a className="hero-kicker sm:hidden hero-connect" href="mailto:">Let’s connect
+          <svg className="hero-connect-arrow" aria-hidden="true" viewBox="0 0 16 16" fill="none">
+            <path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       </header>
 
       <section id="home" className="hero-shell hero-main relative flex flex-col justify-center pb-12 pt-12 md:pb-16 md:pt-16">
