@@ -284,6 +284,35 @@ export default function Home() {
           <span className="hero-index">Strategy, design & digital development</span>
         </div>
       </section>
+
+      <section id="about" className="hero-shell about-section">
+        <div className="about-intro">
+          <motion.div className="about-heading" initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
+            <p className="hero-kicker about-eyebrow">A little about me</p>
+            <h2>Hi there, I’m <span>Abills.</span></h2>
+            <p className="about-name-pill">Also known as Emmanuel Adeyemi</p>
+          </motion.div>
+          <motion.div className="about-copy" initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
+            <p>I’m a digital designer and creator who enjoys turning ideas into clear, thoughtful online experiences.</p>
+            <p>From website design and Webflow development to e-commerce experiences, I bring design and practical thinking together to help brands show up with confidence online.</p>
+          </motion.div>
+        </div>
+        <div className="about-gallery">
+          <div className="about-shape" aria-hidden="true" />
+          <motion.figure className="about-photo about-photo--portrait" initial={reduceMotion ? false : { opacity: 0, y: 34, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: -2 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+            <img src="/images/emmanuelabills%20potrait.jpg" alt="Black and white portrait of Emmanuel Adeyemi" loading="lazy" />
+            <figcaption>Emmanuel Adeyemi <span>— Abills</span></figcaption>
+          </motion.figure>
+          <motion.figure className="about-photo about-photo--studio" initial={reduceMotion ? false : { opacity: 0, y: 38, rotate: 1.5 }} whileInView={{ opacity: 1, y: 0, rotate: 1.5 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
+            <img src="/images/emmanuelabills%20studio.jpg" alt="Emmanuel Adeyemi in a red striped shirt during a studio shoot" loading="lazy" />
+            <figcaption>Creative by nature <span>— intentional by design</span></figcaption>
+          </motion.figure>
+        </div>
+        <div className="about-bottomline">
+          <span className="hero-index">DESIGN · DIGITAL · CREATIVE</span>
+          <span className="hero-index">Thoughtful work, made with intention.</span>
+        </div>
+      </section>
     </main>
   );
 }
