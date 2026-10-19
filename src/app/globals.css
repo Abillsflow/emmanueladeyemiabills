@@ -72,6 +72,10 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--line);
 }
 .hero-portrait-caption .hero-kicker { color: var(--muted); }
+.hero-connect { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.hero-connect span { font-size: 15px; line-height: 1; color: var(--accent); transition: transform .2s ease; }
+.hero-connect:hover span { transform: translate(2px, -2px); }
+.hero-spark { display: inline-block; width: 15px; height: 15px; flex: 0 0 15px; background: var(--muted); clip-path: polygon(50% 0, 60% 38%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
 
 .portrait-glow { position: absolute; width: 70%; aspect-ratio: 1; left: 15%; top: 13%; border-radius: 50%; background: rgba(255,255,255,.32); filter: blur(30px); }
 .portrait-head {
