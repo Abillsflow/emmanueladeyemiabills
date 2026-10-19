@@ -189,7 +189,7 @@ export default function Home() {
         >
           <span className="hero-index">01 / 01 — INTRODUCTION</span>
           <span className="hero-index">A thoughtful approach to the digital world.</span>
-          <span className="hero-index">Scroll to explore ↓</span>
+          <span className="hero-index">Scroll to explore</span>
         </motion.div>
       </section>
 
@@ -199,7 +199,7 @@ export default function Home() {
             <p className="hero-kicker projects-eyebrow">A selection of recent work</p>
             <h2 className="projects-title">Selected <span>projects</span></h2>
           </div>
-          <a className="projects-all-link" href="mailto:">Have a project in mind? <span aria-hidden="true">↗</span></a>
+          <a className="projects-all-link" href="mailto:">Have a project in mind? <span className="arrow-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span></a>
         </div>
 
         <div className="projects-grid">
@@ -215,7 +215,7 @@ export default function Home() {
           >
             <div className="project-visual project-visual--closedhq">
               <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.closedhq.com/" alt="ClosedHQ real estate marketplace website preview" loading="lazy" />
-              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Real estate · Digital platform</span>
             </div>
             <div className="project-meta">
@@ -224,7 +224,7 @@ export default function Home() {
                 <h3>ClosedHQ</h3>
                 <p>Real estate marketplace</p>
               </div>
-              <span className="project-arrow" aria-hidden="true">↗</span>
+              <span className="project-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             </div>
           </motion.a>
 
@@ -240,7 +240,7 @@ export default function Home() {
           >
             <div className="project-visual project-visual--apex">
               <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.apexdispensingsystems.com/" alt="Apex Dispensing Systems website preview" loading="lazy" />
-              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Industrial · Product website</span>
             </div>
             <div className="project-meta">
@@ -249,7 +249,7 @@ export default function Home() {
                 <h3>Apex Dispensing Systems</h3>
                 <p>Industrial product experience</p>
               </div>
-              <span className="project-arrow" aria-hidden="true">↗</span>
+              <span className="project-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             </div>
           </motion.a>
 
@@ -265,7 +265,7 @@ export default function Home() {
           >
             <div className="project-visual project-visual--beyond">
               <img src="/images/beyond%20barz.PNG" alt="Beyond Barz CIC website preview" loading="lazy" />
-              <span className="project-open" aria-hidden="true">↗</span>
+              <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Community · Advocacy website</span>
             </div>
             <div className="project-meta">
@@ -274,7 +274,7 @@ export default function Home() {
                 <h3>Beyond Barz CIC</h3>
                 <p>Community and advocacy</p>
               </div>
-              <span className="project-arrow" aria-hidden="true">↗</span>
+              <span className="project-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             </div>
           </motion.a>
         </div>
