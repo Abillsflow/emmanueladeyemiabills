@@ -28,16 +28,16 @@ export default function Home() {
             <div className="mt-7 flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Based in Nigeria · Working worldwide</div>
           </div>
 
-          <div className="hero-portrait order-1 h-[380px] md:order-2 md:h-[min(570px,64vh)]" role="img" aria-label="Neutral portrait placeholder; replace with Emmanuel’s portrait">
-            <div className="portrait-glow" />
-            <div className="absolute left-5 top-5 z-10 hero-kicker">A little about my work</div>
-            <div className="portrait-body" />
-            <div className="portrait-head" />
-            <div className="portrait-hair" />
-            <div className="portrait-shirt" />
-            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between border-t border-black/15 pt-3">
-              <span className="hero-kicker !text-[#53574d]">Design with intention</span>
-              <span className="text-xl text-[#53574d]">✳</span>
+          <div className="hero-portrait order-1 h-[380px] md:order-2 md:h-[min(570px,64vh)]">
+            <img
+              src="/images/abills-portrait.png"
+              alt="Emmanuel Adeyemi, also known as Abills"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between bg-gradient-to-t from-black/35 to-transparent px-5 pb-5 pt-16">
+              <span className="text-[10px] uppercase tracking-[.16em] text-white">Design with intention</span>
+              <span className="text-xl text-white">✳</span>
             </div>
           </div>
 
