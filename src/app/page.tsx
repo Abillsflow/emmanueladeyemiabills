@@ -299,11 +299,11 @@ export default function Home() {
         </div>
         <div className="about-gallery">
           <div className="about-shape" aria-hidden="true" />
-          <motion.figure className="about-photo about-photo--portrait" initial={reduceMotion ? false : { opacity: 0, y: 34, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: -2 }} animate={reduceMotion ? undefined : { y: [0, -7, 0], rotate: [-2, -1.2, -2] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], y: { duration: 6.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }, rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" } }}>
+          <motion.figure className="about-photo about-photo--portrait" initial={reduceMotion ? false : { opacity: 0, y: 34, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: -2 }} animate={reduceMotion ? undefined : { y: [0, -10, 0], rotate: [-2, -2, -2] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], y: { duration: 8.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 0.4 } }}>
             <img src="/images/emmanuelabills%20potrait.jpg" alt="Black and white portrait of Emmanuel Adeyemi" loading="lazy" />
             <figcaption>Emmanuel Adeyemi <span>— Abills</span></figcaption>
           </motion.figure>
-          <motion.figure className="about-photo about-photo--studio" initial={reduceMotion ? false : { opacity: 0, y: 38, rotate: 1.5 }} whileInView={{ opacity: 1, y: 0, rotate: 1.5 }} animate={reduceMotion ? undefined : { y: [0, 8, 0], rotate: [1.5, 2.2, 1.5] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1], y: { duration: 7.6, repeat: Infinity, ease: "easeInOut", delay: 1.1 }, rotate: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}>
+          <motion.figure className="about-photo about-photo--studio" initial={reduceMotion ? false : { opacity: 0, y: 38, rotate: 1.5 }} whileInView={{ opacity: 1, y: 0, rotate: 1.5 }} animate={reduceMotion ? undefined : { y: [0, 10, 0], rotate: [1.5, 1.5, 1.5] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1], y: { duration: 9.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 1.1 } }}>
             <img src="/images/emmanuelabills%20studio.jpg" alt="Emmanuel Adeyemi in a red striped shirt during a studio shoot" loading="lazy" />
             <figcaption>Creative by nature <span>— intentional by design</span></figcaption>
           </motion.figure>
