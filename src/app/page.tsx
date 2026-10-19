@@ -72,9 +72,18 @@ function ScrambleText({
 
 export default function Home() {
   const reduceMotion = useReducedMotion();
+  const [compactScreen, setCompactScreen] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 760px)");
+    const update = () => setCompactScreen(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
   const reveal = (delay = 0) => reduceMotion
     ? { initial: false as const, animate: { opacity: 1, y: 0 } }
-    : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] as const } };
+    : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: compactScreen ? 0.42 : 0.85, delay: compactScreen ? delay * 0.35 : delay, ease: [0.22, 1, 0.36, 1] as const } };
 
   return (
     <main className="min-h-screen overflow-hidden">
@@ -115,7 +124,7 @@ export default function Home() {
             className="hero-portrait hero-portrait--blend order-1 h-[380px] md:order-2 md:h-[min(650px,78vh)]"
             initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.965 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.15, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: compactScreen ? 0.65 : 1.15, delay: compactScreen ? 0.06 : 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.img
               src="/images/abills-portrait.png"
@@ -123,7 +132,7 @@ export default function Home() {
               className="hero-portrait-image"
               fetchPriority="high"
               animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
-              transition={reduceMotion ? undefined : { y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 } }}
+              transition={reduceMotion || compactScreen ? undefined : { y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 } }}
             />
             <motion.div
               className="hero-portrait-caption"
@@ -141,25 +150,25 @@ export default function Home() {
             <div className="hero-rule" />
             <div>
               <h2 className="text-[34px] font-medium tracking-[-.07em]">
-                <ScrambleText text="Webflow" accentFrom={4} delay={0.78} reducedMotion={!!reduceMotion} />
+                <ScrambleText text="Webflow" accentFrom={4} delay={compactScreen ? 0.18 : 0.78} reducedMotion={!!reduceMotion} />
               </h2>
               <motion.p
                 className="hero-kicker mt-1"
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: reduceMotion ? 0 : 1.48, ease: "easeOut" }}
+                transition={{ duration: compactScreen ? 0.3 : 0.55, delay: reduceMotion ? 0 : compactScreen ? 0.55 : 1.48, ease: "easeOut" }}
               >Design & development</motion.p>
             </div>
             <div className="hero-rule" />
             <div>
               <h2 className="text-[34px] font-medium tracking-[-.07em]">
-                <ScrambleText text="E-commerce" accentFrom={5} delay={0.98} reducedMotion={!!reduceMotion} />
+                <ScrambleText text="E-commerce" accentFrom={5} delay={compactScreen ? 0.3 : 0.98} reducedMotion={!!reduceMotion} />
               </h2>
               <motion.p
                 className="hero-kicker mt-1"
                 initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: reduceMotion ? 0 : 1.68, ease: "easeOut" }}
+                transition={{ duration: compactScreen ? 0.3 : 0.55, delay: reduceMotion ? 0 : compactScreen ? 0.7 : 1.68, ease: "easeOut" }}
               >Brand-led storefronts</motion.p>
             </div>
             <div className="hero-rule" />
