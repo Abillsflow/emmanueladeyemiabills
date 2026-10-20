@@ -371,7 +371,7 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
           <div className="footer-brand-block">
             <a className="footer-wordmark" href="#home" aria-label="Emmanuel Adeyemi home">Emmanuel Adeyemi<span>.</span></a>
             <p>Digital experiences built with clarity, creativity, and intention.</p>
-            <a className="footer-email-link" href="mailto:adedamolabills@gmail.com">adedamolabills@gmail.com <span aria-hidden="true">↗</span></a>
+            <a className="footer-email-link" href="mailto:adedamolabills@gmail.com">adedamolabills@gmail.com <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
           </div>
           <nav className="footer-nav-group" aria-label="Explore portfolio">
             <h3>EXPLORE</h3>
@@ -382,17 +382,17 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
           </nav>
           <nav className="footer-nav-group" aria-label="Connect on social media">
             <h3>FOLLOW ALONG</h3>
-            <a href="https://www.instagram.com/emmanuelcreativehub/" target="_blank" rel="noreferrer">Instagram <span>↗</span></a>
-            <a href="https://www.tiktok.com/@abillscreates" target="_blank" rel="noreferrer">TikTok <span>↗</span></a>
-            <a href="https://www.threads.com/@emmanuelcreativehub" target="_blank" rel="noreferrer">Threads <span>↗</span></a>
-            <a href="https://x.com/iamabills" target="_blank" rel="noreferrer">X / Twitter <span>↗</span></a>
-            <a href="https://www.linkedin.com/in/emmanuelcreates" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
-            <a href="https://www.facebook.com/share/1Eb5Hx5Ec2/" target="_blank" rel="noreferrer">Facebook <span>↗</span></a>
+            <a href="https://www.instagram.com/emmanuelcreativehub/" target="_blank" rel="noreferrer">Instagram <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://www.tiktok.com/@abillscreates" target="_blank" rel="noreferrer">TikTok <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://www.threads.com/@emmanuelcreativehub" target="_blank" rel="noreferrer">Threads <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://x.com/iamabills" target="_blank" rel="noreferrer">X / Twitter <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://www.linkedin.com/in/emmanuelcreates" target="_blank" rel="noreferrer">LinkedIn <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://www.facebook.com/share/1Eb5Hx5Ec2/" target="_blank" rel="noreferrer">Facebook <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
           </nav>
           <nav className="footer-nav-group footer-contact-group" aria-label="Get in touch">
             <h3>GET IN TOUCH</h3>
-            <a href="mailto:adedamolabills@gmail.com">Email me <span>↗</span></a>
-            <a href="https://wa.me/2349157448456" target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a>
+            <a href="mailto:adedamolabills@gmail.com">Email me <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+            <a href="https://wa.me/2349157448456" target="_blank" rel="noreferrer">WhatsApp <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
             <p>Available for select projects and thoughtful collaborations.</p>
           </nav>
         </div>
