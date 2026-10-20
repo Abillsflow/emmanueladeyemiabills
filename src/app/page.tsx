@@ -72,7 +72,7 @@ function ScrambleText({
 
 export default function Home() {
   const reduceMotion = useReducedMotion();
-  const [compactScreen, setCompactScreen] = useState(false);
+  const [compactScreen, setCompactScreen] = useState(false);\n  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 760px)");
@@ -87,19 +87,42 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden">
-      <header className="hero-shell hero-topline flex min-h-[76px] items-center justify-between gap-5">
-        <motion.a {...reveal(0.05)} href="#home" className="text-sm font-semibold tracking-[-.04em]" aria-label="Abills home">
-          ABILLS<span style={{ color: "var(--accent)" }}>.</span>
-        </motion.a>
-        <div className="hidden items-center gap-8 sm:flex">
-          <motion.span {...reveal(0.12)} className="hero-kicker">Digital designer & developer</motion.span>
-          <motion.span {...reveal(0.18)} className="flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Available for freelance</motion.span>
-        </div>
-        <a className="hero-kicker sm:hidden hero-connect" href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Let’s connect
-          <svg className="hero-connect-arrow" aria-hidden="true" viewBox="0 0 16 16" fill="none">
-            <path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+      <header className="portfolio-nav-shell">
+        <nav className="portfolio-nav" aria-label="Main navigation">
+          <a href="#home" className="nav-name" aria-label="Emmanuel Adeyemi home">
+            <span className="nav-name-mark">EA</span>
+            <span className="nav-name-copy">Emmanuel Adeyemi<small>DESIGN & DIGITAL</small></span>
+          </a>
+          <div className="nav-links">
+            <a href="#selected-projects">Work <span>01</span></a>
+            <a href="#about">About <span>02</span></a>
+            <a href="#services">Services <span>03</span></a>
+            <a href="#testimonials">Kind words <span>04</span></a>
+          </div>
+          <div className="nav-actions">
+            <span className="nav-availability"><i /> Open to projects</span>
+            <a className="nav-contact" href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Let’s talk <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
+          </div>
+          <button className={`nav-menu-toggle ${mobileMenuOpen ? "is-open" : ""}`} type="button" aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <span>{mobileMenuOpen ? "CLOSE" : "MENU"}</span><i aria-hidden="true"><b /><b /></i>
+          </button>
+        </nav>
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div id="mobile-navigation" className="mobile-nav-panel" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: reduceMotion ? 0 : 0.22 }} >
+              <p className="mobile-nav-eyebrow">NAVIGATE THE PORTFOLIO</p>
+              {[
+                ["01", "Selected work", "#selected-projects"],
+                ["02", "About me", "#about"],
+                ["03", "Services", "#services"],
+                ["04", "Client notes", "#testimonials"],
+              ].map(([number, label, href]) => (
+                <a key={number} href={href} onClick={() => setMobileMenuOpen(false)}><span>{number}</span>{label}<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
+              ))}
+              <div className="mobile-nav-bottom"><span><i /> Open to select projects</span><a href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Start a conversation <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg></a></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <section id="home" className="hero-shell hero-main relative flex flex-col justify-center pb-12 pt-12 md:pb-16 md:pt-16">
