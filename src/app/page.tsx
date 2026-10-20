@@ -459,7 +459,7 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="testimonials-pagination" role="group" aria-label="Choose testimonial set">
           {Array.from({ length: groupCount }, (_, index) => index).map((index) => (
             <button
-              key={testimonial.name}
+              key={index}
               type="button"
               className={`testimonial-dot${index === activeIndex ? " is-active" : ""}`}
               onClick={() => setActiveIndex(index)}
