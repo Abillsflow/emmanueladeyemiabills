@@ -787,7 +787,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
               <span className="service-node" aria-hidden="true">{service.number}</span>
               <div className="service-entry-inner">
                 <a className="service-image-wrap" href={`mailto:adedamolabills@gmail.com?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-                  <Image src={service.image} alt={service.alt} fill sizes="(max-width: 760px) 100vw, 50vw" className="service-image" />
+                  <Image src={service.image} alt={service.alt} fill sizes="(max-width: 760px) 100vw, 50vw" className="service-image" unoptimized />
                   <span className="service-image-index">{service.number} <span>/ 03</span></span>
                   <span className="service-image-arrow" aria-hidden="true">
                     <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
