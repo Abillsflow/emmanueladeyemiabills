@@ -158,7 +158,6 @@ export default function Home() {
         <nav className="portfolio-nav" aria-label="Main navigation">
           <a href="#home" className="nav-name" aria-label="Emmanuel Adeyemi home">
             <span className="nav-name-logo-wrap"><img className="nav-name-logo" src="/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png" alt="" /></span>
-            <span className="nav-name-copy">Emmanuel Adeyemi<small>DESIGN & DIGITAL</small></span>
           </a>
           <div className="nav-links" aria-label="Portfolio sections">
             <span className="nav-timeline-track" aria-hidden="true"><i className={`nav-timeline-progress section-${activeSection}`} /></span>
