@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 
+const MotionImage = motion(Image);
+
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
 function CountUp({ value, reducedMotion }: { value: string; reducedMotion: boolean }) {
@@ -222,11 +224,14 @@ export default function Home() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: compactScreen ? 0.65 : 1.15, delay: compactScreen ? 0.06 : 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.img
+            <MotionImage
               src="/images/abills-portrait.png"
               alt="Emmanuel Adeyemi, also known as Abills"
+              width={1200}
+              height={1400}
+              sizes="(max-width: 760px) 112vw, (max-width: 1100px) 62vw, 54vw"
+              priority
               className="hero-portrait-image"
-              fetchPriority="high"
               animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
               transition={reduceMotion || compactScreen ? undefined : { y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 } }}
             />
