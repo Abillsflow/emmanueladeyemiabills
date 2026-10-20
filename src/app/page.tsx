@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
@@ -333,7 +334,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--closedhq">
-              <img src="/images/Closedhq.PNG" alt="ClosedHQ real estate marketplace website preview" loading="lazy" />
+              <Image src="/images/Closedhq.PNG" alt="ClosedHQ real estate marketplace website preview" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-image" />
               <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Real estate · Digital platform</span>
             </div>
@@ -358,7 +359,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--apex">
-              <img src="/images/apex.PNG" alt="Apex Dispensing Systems website preview" loading="lazy" />
+              <Image src="/images/apex.PNG" alt="Apex Dispensing Systems website preview" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-image" />
               <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Industrial · Product website</span>
             </div>
@@ -781,7 +782,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
               <span className="service-node" aria-hidden="true">{service.number}</span>
               <div className="service-entry-inner">
                 <a className="service-image-wrap" href={`mailto:adedamolabills@gmail.com?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
-                  <img src={service.image} alt={service.alt} loading="lazy" />
+                  <Image src={service.image} alt={service.alt} fill sizes="(max-width: 760px) 100vw, 50vw" className="service-image" />
                   <span className="service-image-index">{service.number} <span>/ 03</span></span>
                   <span className="service-image-arrow" aria-hidden="true">
                     <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
