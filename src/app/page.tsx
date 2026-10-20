@@ -75,6 +75,14 @@ export default function Home() {
   const [compactScreen, setCompactScreen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [navScrolled, setNavScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setNavScrolled(window.scrollY > 48);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const sectionIds = ["home", "selected-projects", "about", "services", "testimonials", "contact"];
@@ -100,7 +108,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-x-clip">
-      <header className="portfolio-nav-shell">
+      <header className={`portfolio-nav-shell ${navScrolled ? "is-scrolled" : ""}`}>
         <nav className="portfolio-nav" aria-label="Main navigation">
           <a href="#home" className="nav-name" aria-label="Emmanuel Adeyemi home">
             <span className="nav-name-mark">EA</span>
