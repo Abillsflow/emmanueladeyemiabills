@@ -441,8 +441,8 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
               <motion.article
                 className={`testimonial-card testimonial-card--${cardIndex + 1}`}
                 key={testimonial.name}
-                animate={reduceMotion ? undefined : { y: [0, cardIndex === 1 ? 10 : -9, 0] }}
-                transition={reduceMotion ? undefined : {
+                animate={reduceMotion || isMobile ? undefined : { y: [0, cardIndex === 1 ? 10 : -9, 0] }}
+                transition={reduceMotion || isMobile ? undefined : {
                   y: { duration: 4.8 + cardIndex * 0.8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: cardIndex * 0.45 },
                 }}
               >
@@ -477,9 +477,9 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
               type="button"
               className={`testimonial-dot${index === activeIndex ? " is-active" : ""}`}
               onClick={() => setActiveIndex(index)}
-              aria-label={`Show testimonial set ${index + 1}`}
+              aria-label={isMobile ? `Show testimonial ${index + 1}` : `Show testimonial set ${index + 1}`}
               aria-pressed={index === activeIndex}
-            />
+            ><span className="testimonial-dot-number">{String(index + 1).padStart(2, "0")}</span></button>
           ))}
         </div>
         <div className="testimonials-arrows">
