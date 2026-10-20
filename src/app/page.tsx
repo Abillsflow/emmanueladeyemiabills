@@ -5,6 +5,54 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTra
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
+function CountUp({ value, reducedMotion }: { value: string; reducedMotion: boolean }) {
+  const target = Number.parseInt(value.replace(/[^0-9]/g, ""), 10);
+  const suffix = value.replace(/[0-9]/g, "");
+  const [count, setCount] = useState(reducedMotion ? target : 0);
+  const counterRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const node = counterRef.current;
+    if (!node) return;
+    if (reducedMotion) {
+      setCount(target);
+      return;
+    }
+
+    let frame = 0;
+    let started = false;
+    let animationFrame = 0;
+    let observer: IntersectionObserver | undefined;
+
+    const animate = () => {
+      const duration = 1500;
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        setCount(Math.round(target * eased));
+        if (progress < 1) animationFrame = requestAnimationFrame(tick);
+      };
+      animationFrame = requestAnimationFrame(tick);
+    };
+
+    observer = new IntersectionObserver((entries) => {
+      if (started || !entries.some((entry) => entry.isIntersecting)) return;
+      started = true;
+      observer?.disconnect();
+      animate();
+    }, { threshold: 0.35 });
+
+    observer.observe(node);
+    return () => {
+      observer?.disconnect();
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [target, reducedMotion]);
+
+  return <span ref={counterRef} aria-label={value}>{count}{suffix}</span>;
+}
+
 function ScrambleText({
   text,
   accentFrom,
@@ -260,7 +308,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="credibility-number">{number}</span>
+              <span className="credibility-number"><CountUp value={number} reducedMotion={!!reduceMotion} /></span>
               <span className="credibility-label">{label}</span>
               <span className="credibility-index">0{index + 1}</span>
             </motion.div>
