@@ -1238,3 +1238,20 @@ a { color: inherit; text-decoration: none; }
 @media(prefers-reduced-motion:reduce) {
   .testimonials-section.is-in-view .testimonial-timeline-segment.is-current .testimonial-timeline-fill { animation:none; transform:scaleX(1); }
 }
+
+
+/* Site-wide anchor navigation: smooth, with room for the sticky header */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 108px;
+}
+section[id] {
+  scroll-margin-top: 108px;
+}
+@media (max-width:760px) {
+  html { scroll-padding-top: 84px; }
+  section[id] { scroll-margin-top: 84px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+}
