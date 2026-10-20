@@ -157,7 +157,7 @@ export default function Home() {
       <header className={`portfolio-nav-shell ${navScrolled ? "is-scrolled" : ""}`}>
         <nav className="portfolio-nav" aria-label="Main navigation">
           <a href="#home" className="nav-name" aria-label="Emmanuel Adeyemi home">
-            <span className="nav-name-mark">EA</span>
+            <span className="nav-name-logo-wrap"><img className="nav-name-logo" src="/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png" alt="" /></span>
             <span className="nav-name-copy">Emmanuel Adeyemi<small>DESIGN & DIGITAL</small></span>
           </a>
           <div className="nav-links" aria-label="Portfolio sections">
@@ -490,7 +490,7 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
       <footer className="portfolio-footer">
         <div className="footer-upper hero-shell">
           <div className="footer-brand-block">
-            <a className="footer-wordmark" href="#home" aria-label="Emmanuel Adeyemi home">Emmanuel Adeyemi<span>.</span></a>
+            <a className="footer-logo-link" href="#home" aria-label="Emmanuel Adeyemi home"><img className="footer-logo" src="/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png" alt="Emmanuel Adeyemi logo" /></a>
             <p>Digital experiences built with clarity, creativity, and intention.</p>
             <a className="footer-email-link" href="mailto:adedamolabills@gmail.com">adedamolabills@gmail.com <svg className="footer-external-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
           </div>
