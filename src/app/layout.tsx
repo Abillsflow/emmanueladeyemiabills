@@ -2,10 +2,10 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://emmanueladeyemiabills-7j2u.vercel.app"),
+  metadataBase: new URL("https://www.emmanueladeyemi.site"),
   alternates: { canonical: "/" },
   keywords: ["Emmanuel Adeyemi", "Abills", "Webflow developer", "Webflow designer", "website designer", "website development", "UI UX designer", "e-commerce website design", "Shopify website design", "digital designer"],
-  authors: [{ name: "Emmanuel Adeyemi", url: "https://emmanueladeyemiabills-7j2u.vercel.app" }],
+  authors: [{ name: "Emmanuel Adeyemi", url: "https://www.emmanueladeyemi.site" }],
   creator: "Emmanuel Adeyemi",
   publisher: "Emmanuel Adeyemi",
   category: "Design and Web Development",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Emmanuel Adeyemi (Abills) | Webflow Designer & Developer",
     description: "Website design, Webflow development, UI/UX, and e-commerce experiences built with intention by Emmanuel Adeyemi (Abills).",
     siteName: "Emmanuel Adeyemi — Abills",
-    url: "https://emmanueladeyemiabills-7j2u.vercel.app",
+    url: "https://www.emmanueladeyemi.site",
     images: [{ url: "/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png", alt: "Emmanuel Adeyemi personal logo" }],
   },
   robots: { index: true, follow: true },
@@ -45,11 +45,11 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://emmanueladeyemiabills-7j2u.vercel.app/#person",
+    "@id": "https://www.emmanueladeyemi.site/#person",
     name: "Emmanuel Adeyemi",
     alternateName: "Abills",
-    url: "https://emmanueladeyemiabills-7j2u.vercel.app/",
-    image: "https://emmanueladeyemiabills-7j2u.vercel.app/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png",
+    url: "https://www.emmanueladeyemi.site/",
+    image: "https://www.emmanueladeyemi.site/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png",
     jobTitle: "Digital Designer and Webflow Developer",
     description: "Digital designer and Webflow developer focused on website design, UI/UX, and e-commerce experiences.",
     sameAs: [
@@ -65,11 +65,11 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://emmanueladeyemiabills-7j2u.vercel.app/#website",
+    "@id": "https://www.emmanueladeyemi.site/#website",
     name: "Emmanuel Adeyemi — Abills",
-    url: "https://emmanueladeyemiabills-7j2u.vercel.app/",
+    url: "https://www.emmanueladeyemi.site/",
     inLanguage: "en",
-    creator: { "@id": "https://emmanueladeyemiabills-7j2u.vercel.app/#person" }
+    creator: { "@id": "https://www.emmanueladeyemi.site/#person" }
   }
 ];
 
