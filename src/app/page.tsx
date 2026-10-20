@@ -371,19 +371,21 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const total = TESTIMONIALS.length;
+  const groupCount = Math.ceil(total / 3);
 
   useEffect(() => {
     if (reduceMotion || isPaused) return;
     const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % total);
+      setActiveIndex((current) => (current + 1) % groupCount);
     }, 6200);
     return () => clearInterval(timer);
-  }, [reduceMotion, isPaused, total]);
+  }, [reduceMotion, isPaused, groupCount]);
 
   const move = (direction: number) => {
-    setActiveIndex((current) => (current + direction + total) % total);
+    setActiveIndex((current) => (current + direction + groupCount) % groupCount);
   };
-  const visibleTestimonials = [0, 1, 2].map((offset) => TESTIMONIALS[(activeIndex + offset) % total]);
+  const startIndex = activeIndex * 3;
+  const visibleTestimonials = [0, 1, 2].map((offset) => TESTIMONIALS[(startIndex + offset) % total]);
 
   return (
     <section
@@ -432,7 +434,7 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
               >
                 <div className="testimonial-card-top">
                   <span className="testimonial-mark" aria-hidden="true">“</span>
-                  <span className="testimonial-count">{String(((activeIndex + cardIndex) % total) + 1).padStart(2, "0")} / 07</span>
+                  <span className="testimonial-count">{String(((startIndex + cardIndex) % total) + 1).padStart(2, "0")} / 07</span>
                 </div>
                 <p className="testimonial-quote">{testimonial.quote}</p>
                 <div className="testimonial-card-bottom">
@@ -453,15 +455,15 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
       </div>
 
       <div className="testimonials-controls">
-        <p className="hero-index">CLIENT NOTES <span>— {String(activeIndex + 1).padStart(2, "0")} TO {String(Math.min(activeIndex + 3, total)).padStart(2, "0")}</span></p>
+        <p className="hero-index">CLIENT NOTES <span>— SET {String(activeIndex + 1).padStart(2, "0")} / 0{groupCount}</span></p>
         <div className="testimonials-pagination" role="group" aria-label="Choose testimonial set">
-          {TESTIMONIALS.map((testimonial, index) => (
+          {Array.from({ length: groupCount }, (_, index) => index).map((index) => (
             <button
               key={testimonial.name}
               type="button"
               className={`testimonial-dot${index === activeIndex ? " is-active" : ""}`}
               onClick={() => setActiveIndex(index)}
-              aria-label={`Show testimonials starting with ${testimonial.name}`}
+              aria-label={`Show testimonial set ${index + 1}`}
               aria-pressed={index === activeIndex}
             />
           ))}
