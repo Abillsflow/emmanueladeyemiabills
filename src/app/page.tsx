@@ -72,7 +72,8 @@ function ScrambleText({
 
 export default function Home() {
   const reduceMotion = useReducedMotion();
-  const [compactScreen, setCompactScreen] = useState(false);\n  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [compactScreen, setCompactScreen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 760px)");
