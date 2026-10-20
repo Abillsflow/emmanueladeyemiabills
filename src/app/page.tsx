@@ -8,17 +8,12 @@ const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 function CountUp({ value, reducedMotion }: { value: string; reducedMotion: boolean }) {
   const target = Number.parseInt(value.replace(/[^0-9]/g, ""), 10);
   const suffix = value.replace(/[0-9]/g, "");
-  const [count, setCount] = useState(reducedMotion ? target : 0);
+  const [count, setCount] = useState(0);
   const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const node = counterRef.current;
     if (!node) return;
-    if (reducedMotion) {
-      setCount(target);
-      return;
-    }
-
     let frame = 0;
     let started = false;
     let animationFrame = 0;
@@ -40,6 +35,10 @@ function CountUp({ value, reducedMotion }: { value: string; reducedMotion: boole
       if (started || !entries.some((entry) => entry.isIntersecting)) return;
       started = true;
       observer?.disconnect();
+      if (reducedMotion) {
+        setCount(target);
+        return;
+      }
       animate();
     }, { threshold: 0.35 });
 
