@@ -1530,3 +1530,36 @@ section[id] {
   .portfolio-nav .nav-name-logo-wrap { flex-basis:96px !important; width:96px !important; height:48px !important; }
   .portfolio-nav .nav-menu-toggle { gap:9px !important; }
 }
+
+
+/* Services timeline cards: a little more substantial without widening the layout */
+.services-timeline { gap:56px; }
+.service-entry { min-height:258px; }
+.service-entry-inner { width:min(100%,330px); }
+.service-image-wrap { aspect-ratio:1.58 / 1; }
+.service-copy { padding-top:15px; }
+.service-copy h3 { font-size:clamp(21px,1.9vw,27px); }
+.service-description { font-size:13px; line-height:1.75; }
+.service-tags { gap:7px; margin-top:14px; }
+.service-tags span { min-height:26px; padding:5px 9px; font-size:9px; }
+@media(max-width:900px) {
+  .services-timeline { gap:46px; }
+  .service-entry { min-height:246px; }
+  .service-entry-inner { width:min(100%,310px); }
+}
+@media(max-width:760px) {
+  .services-timeline { gap:34px; }
+  .service-entry { min-height:0; }
+  .service-entry-inner,.service-entry--left .service-entry-inner,.service-entry--right .service-entry-inner {
+    width:100%;
+    max-width:360px;
+  }
+  .service-image-wrap { aspect-ratio:1.58 / 1; }
+  .service-copy { padding-top:14px; }
+  .service-copy h3 { font-size:clamp(22px,5.8vw,28px); }
+  .service-description { font-size:13px; }
+  .service-tags span { font-size:9px; min-height:26px; }
+}
+@media(max-width:380px) {
+  .service-entry-inner,.service-entry--left .service-entry-inner,.service-entry--right .service-entry-inner { max-width:100%; }
+}
