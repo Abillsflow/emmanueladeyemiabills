@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.emmanueladeyemi.site"),
   alternates: { canonical: "/" },
-  keywords: ["Emmanuel Adeyemi", "Abills", "Webflow developer", "Webflow designer", "website designer", "website development", "UI UX designer", "e-commerce website design", "Shopify website design", "digital designer"],
+  keywords: ["Emmanuel Adeyemi", "Abills", "Webflow developer in Nigeria", "Webflow designer", "website designer in Nigeria", "freelance website designer", "website development", "UI UX designer", "e-commerce website design", "Shopify website design", "digital designer"],
   authors: [{ name: "Emmanuel Adeyemi", url: "https://www.emmanueladeyemi.site" }],
   creator: "Emmanuel Adeyemi",
   publisher: "Emmanuel Adeyemi",
@@ -16,18 +16,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Emmanuel Adeyemi | Freelance Webflow Developer & Digital Designer",
-    description: "Website design, Webflow development, UI/UX, and e-commerce experiences built with intention.",
+    title: "Emmanuel Adeyemi | Webflow Developer & Website Designer",
+    description: "Nigeria-based Webflow developer and website designer building responsive business websites, Webflow CMS experiences, and e-commerce sites for clients in Nigeria and worldwide.",
     images: ["/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png"],
   },
-  title: "Emmanuel Adeyemi | Freelance Webflow Developer & Digital Designer",
+  title: "Emmanuel Adeyemi | Webflow Developer & Website Designer",
   description:
-    "Emmanuel Adeyemi is a freelance Webflow developer and digital designer building strategic websites, UI/UX, and e-commerce experiences for growing businesses.",
+    "Emmanuel Adeyemi is a Nigeria-based freelance Webflow developer and website designer building responsive business websites, Webflow CMS experiences, and e-commerce websites for clients in Nigeria and worldwide.",
   applicationName: "Emmanuel Adeyemi",
   openGraph: {
     type: "website",
-    title: "Emmanuel Adeyemi | Freelance Webflow Developer & Digital Designer",
-    description: "Freelance Webflow development, website design, UI/UX, and e-commerce experiences by Emmanuel Adeyemi.",
+    title: "Emmanuel Adeyemi | Webflow Developer & Website Designer",
+    description: "Webflow development, website design, UI/UX, and e-commerce websites by Emmanuel Adeyemi in Nigeria, working with clients worldwide.",
     siteName: "Emmanuel Adeyemi",
     url: "https://www.emmanueladeyemi.site",
     images: [{ url: "/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png", alt: "Emmanuel Adeyemi personal logo" }],
@@ -50,8 +50,8 @@ const structuredData = [
     alternateName: "Abills",
     url: "https://www.emmanueladeyemi.site/",
     image: "https://www.emmanueladeyemi.site/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png",
-    jobTitle: "Digital Designer and Webflow Developer",
-    description: "Digital designer and Webflow developer focused on website design, UI/UX, and e-commerce experiences.",
+    jobTitle: "Freelance Webflow Developer and Website Designer",
+    description: "Nigeria-based freelance Webflow developer and website designer creating responsive business websites, Webflow CMS experiences, and e-commerce websites for clients locally and worldwide.",
     sameAs: [
       "https://www.instagram.com/emmanuelcreativehub/",
       "https://www.tiktok.com/@abillscreates",
@@ -60,7 +60,7 @@ const structuredData = [
       "https://www.linkedin.com/in/emmanuelcreates",
       "https://www.facebook.com/share/1Eb5Hx5Ec2/"
     ],
-    knowsAbout: ["Webflow development", "Website design", "UI/UX design", "E-commerce website design", "Shopify", "Digital design"]
+    knowsAbout: ["Webflow development", "Webflow CMS", "Website design", "UI/UX design", "E-commerce website design", "Shopify", "Website design in Nigeria"]
   },
   {
     "@context": "https://schema.org",
