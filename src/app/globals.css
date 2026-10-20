@@ -970,3 +970,42 @@ a { color: inherit; text-decoration: none; }
 @media(prefers-reduced-motion:reduce) {
  .nav-timeline-progress,.nav-links a .nav-step,.nav-links a .nav-link-label,.mobile-nav-panel>a::after,.mobile-nav-panel>a .mobile-nav-node,.mobile-nav-panel>a .mobile-nav-label,.mobile-nav-panel>a svg { transition:none!important; }
 }
+
+
+/* Guard mobile timeline icons against inherited SVG sizing */
+@media(max-width:760px) {
+  .mobile-nav-panel .mobile-nav-timeline > a {
+    display:grid !important;
+    grid-template-columns:30px minmax(0,1fr) 18px !important;
+    align-items:center !important;
+    min-height:60px !important;
+    height:60px !important;
+    gap:12px !important;
+    font-size:22px !important;
+  }
+  .mobile-nav-panel .mobile-nav-timeline > a > svg {
+    display:block !important;
+    width:15px !important;
+    min-width:15px !important;
+    max-width:15px !important;
+    height:15px !important;
+    min-height:15px !important;
+    max-height:15px !important;
+    justify-self:end !important;
+    align-self:center !important;
+    flex:none !important;
+  }
+  .mobile-nav-panel .mobile-nav-timeline > a > .mobile-nav-node {
+    width:22px !important;
+    min-width:22px !important;
+    height:22px !important;
+    min-height:22px !important;
+    justify-self:center !important;
+  }
+  .mobile-nav-panel .mobile-nav-timeline > a > .mobile-nav-label {
+    display:block !important;
+    min-width:0 !important;
+    line-height:1.2 !important;
+  }
+  .mobile-nav-timeline::before { pointer-events:none; }
+}
