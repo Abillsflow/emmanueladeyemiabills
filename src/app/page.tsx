@@ -74,6 +74,18 @@ export default function Home() {
   const reduceMotion = useReducedMotion();
   const [compactScreen, setCompactScreen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const sectionIds = ["home", "selected-projects", "about", "services", "testimonials", "contact"];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => section !== null);
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveSection(visible.target.id);
+    }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.15, 0.35, 0.6] });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 760px)");
@@ -94,11 +106,12 @@ export default function Home() {
             <span className="nav-name-mark">EA</span>
             <span className="nav-name-copy">Emmanuel Adeyemi<small>DESIGN & DIGITAL</small></span>
           </a>
-          <div className="nav-links">
-            <a href="#selected-projects">Work <span>01</span></a>
-            <a href="#about">About <span>02</span></a>
-            <a href="#services">Services <span>03</span></a>
-            <a href="#testimonials">Kind words <span>04</span></a>
+          <div className="nav-links" aria-label="Portfolio sections">
+            <span className="nav-timeline-track" aria-hidden="true"><i className={`nav-timeline-progress section-${activeSection}`} /></span>
+            <a className={activeSection === "selected-projects" ? "is-active" : ""} href="#selected-projects"><span className="nav-step">01</span><span className="nav-link-label">Work</span></a>
+            <a className={activeSection === "about" ? "is-active" : ""} href="#about"><span className="nav-step">02</span><span className="nav-link-label">About</span></a>
+            <a className={activeSection === "services" ? "is-active" : ""} href="#services"><span className="nav-step">03</span><span className="nav-link-label">Services</span></a>
+            <a className={activeSection === "testimonials" ? "is-active" : ""} href="#testimonials"><span className="nav-step">04</span><span className="nav-link-label">Kind words</span></a>
           </div>
           <div className="nav-actions">
             <span className="nav-availability"><i /> Open to projects</span>
@@ -111,15 +124,17 @@ export default function Home() {
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div id="mobile-navigation" className="mobile-nav-panel" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: reduceMotion ? 0 : 0.22 }} >
-              <p className="mobile-nav-eyebrow">NAVIGATE THE PORTFOLIO</p>
+              <p className="mobile-nav-eyebrow">NAVIGATE THE PORTFOLIO <span>01 — 04</span></p>
+              <div className="mobile-nav-timeline">
               {[
                 ["01", "Selected work", "#selected-projects"],
                 ["02", "About me", "#about"],
                 ["03", "Services", "#services"],
                 ["04", "Client notes", "#testimonials"],
               ].map(([number, label, href]) => (
-                <a key={number} href={href} onClick={() => setMobileMenuOpen(false)}><span>{number}</span>{label}<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
+                <a key={number} className={activeSection === href.slice(1) ? "is-active" : ""} href={href} onClick={() => setMobileMenuOpen(false)}><span className="mobile-nav-node">{number}</span><span className="mobile-nav-label">{label}</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
               ))}
+              </div>
               <div className="mobile-nav-bottom"><span><i /> Open to select projects</span><a href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Start a conversation <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg></a></div>
             </motion.div>
           )}
