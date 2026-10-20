@@ -316,11 +316,64 @@ export default function Home() {
 
       <ServicesTimeline reduceMotion={!!reduceMotion} />
       <TestimonialsCarousel reduceMotion={!!reduceMotion} />
+      <ContactSection reduceMotion={!!reduceMotion} />
 
     </main>
   );
 }
 
+
+function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
+  const year = new Date().getFullYear();
+  return (
+    <>
+      <motion.section
+        id="contact"
+        className="hero-shell contact-section"
+        aria-label="Contact Emmanuel Adeyemi"
+        initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="contact-topline">
+          <p className="hero-kicker">Have a project in mind?</p>
+          <span className="contact-availability"><span aria-hidden="true" /> OPEN TO SELECT PROJECTS</span>
+        </div>
+        <div className="contact-main">
+          <h2>Let’s make<br /><span>something meaningful.</span></h2>
+          <p>Have an idea, a website to build, or a business ready for its next chapter? Tell me what you’re working on. Let’s make it happen.</p>
+          <a className="contact-primary" href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">
+            Start a conversation
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+        </div>
+        <div className="contact-links">
+          <a href="mailto:adedamolabills@gmail.com" className="contact-link">
+            <span className="contact-link-label">EMAIL</span>
+            <span className="contact-link-value">adedamolabills@gmail.com</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+          <a href="https://wa.me/2349157448456" target="_blank" rel="noreferrer" className="contact-link">
+            <span className="contact-link-label">WHATSAPP</span>
+            <span className="contact-link-value">+234 915 744 8456</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+          <a href="https://www.instagram.com/emmanuelcreativehub/" target="_blank" rel="noreferrer" className="contact-link">
+            <span className="contact-link-label">INSTAGRAM</span>
+            <span className="contact-link-value">@emmanuelcreativehub</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </a>
+        </div>
+      </motion.section>
+      <footer className="hero-shell portfolio-footer">
+        <a className="footer-wordmark" href="#top" aria-label="Back to top">ABILLS<span>.</span></a>
+        <p>Thoughtful digital work, made with intention.</p>
+        <span className="footer-copyright">© {year} Emmanuel Adeyemi</span>
+      </footer>
+    </>
+  );
+}
 
 const TESTIMONIALS = [
   {
