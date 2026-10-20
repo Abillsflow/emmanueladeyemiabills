@@ -370,8 +370,20 @@ const TESTIMONIALS = [
 function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const total = TESTIMONIALS.length;
-  const groupCount = Math.ceil(total / 3);
+  const groupCount = isMobile ? total : Math.ceil(total / 3);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 680px)");
+    const updateViewport = () => {
+      setIsMobile(mediaQuery.matches);
+      setActiveIndex(0);
+    };
+    updateViewport();
+    mediaQuery.addEventListener("change", updateViewport);
+    return () => mediaQuery.removeEventListener("change", updateViewport);
+  }, []);
 
   useEffect(() => {
     if (reduceMotion || isPaused) return;
@@ -384,8 +396,10 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
   const move = (direction: number) => {
     setActiveIndex((current) => (current + direction + groupCount) % groupCount);
   };
-  const startIndex = activeIndex * 3;
-  const visibleTestimonials = [0, 1, 2].map((offset) => TESTIMONIALS[(startIndex + offset) % total]);
+  const startIndex = isMobile ? activeIndex : activeIndex * 3;
+  const visibleTestimonials = isMobile
+    ? [TESTIMONIALS[activeIndex]]
+    : [0, 1, 2].map((offset) => TESTIMONIALS[(startIndex + offset) % total]);
 
   return (
     <section
