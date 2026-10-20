@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
@@ -315,8 +315,168 @@ export default function Home() {
       </section>
 
       <ServicesTimeline reduceMotion={!!reduceMotion} />
+      <TestimonialsCarousel reduceMotion={!!reduceMotion} />
 
     </main>
+  );
+}
+
+
+const TESTIMONIALS = [
+  {
+    name: "Prince",
+    project: "ClosedHQ",
+    service: "Website development",
+    quote: "Emmanuel understood the vision behind ClosedHQ and helped turn it into a functional digital experience. He paid attention to the details and worked toward building a platform that supports our long-term goals."
+  },
+  {
+    name: "Chris",
+    project: "Apex Dispensing Systems",
+    service: "Website design & AI chatbot",
+    quote: "Emmanuel brought a thoughtful approach to our website design and AI chatbot integration. He focused on creating a professional online presence while making the experience more useful for visitors."
+  },
+  {
+    name: "Shada",
+    project: "Nannycon",
+    service: "Website development",
+    quote: "Emmanuel helped translate our ideas into a structured website and paid attention to making the experience clear and accessible. The result gives our concept a digital home people can navigate with confidence."
+  },
+  {
+    name: "Mason",
+    project: "Valeria",
+    service: "Website development",
+    quote: "Emmanuel helped bring the Valeria website to life with a focus on presentation, structure, and usability. He understood the importance of creating an online experience that reflects the brand."
+  },
+  {
+    name: "Shelli",
+    project: "Cork & Canvas",
+    service: "Website development & SEO",
+    quote: "Emmanuel approached Cork & Canvas with both design and discoverability in mind. He worked on building a polished website while considering the SEO foundations needed to help people find us online."
+  },
+  {
+    name: "Oliver",
+    project: "Inspyred",
+    service: "Website development",
+    quote: "Emmanuel helped shape the Inspyred website into a more organized and professional digital experience. He focused on presenting the brand clearly and making the site easier for visitors to explore."
+  },
+  {
+    name: "Junior",
+    project: "Noble",
+    service: "TikTok Shop setup",
+    quote: "Emmanuel helped us work through the TikTok Shop setup with a clear focus on getting the essentials in place. His practical approach made the setup process more manageable."
+  }
+];
+
+function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const total = TESTIMONIALS.length;
+
+  useEffect(() => {
+    if (reduceMotion || isPaused) return;
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % total);
+    }, 6200);
+    return () => clearInterval(timer);
+  }, [reduceMotion, isPaused, total]);
+
+  const move = (direction: number) => {
+    setActiveIndex((current) => (current + direction + total) % total);
+  };
+  const visibleTestimonials = [0, 1, 2].map((offset) => TESTIMONIALS[(activeIndex + offset) % total]);
+
+  return (
+    <section
+      id="testimonials"
+      className="hero-shell testimonials-section"
+      aria-label="Client testimonials"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsPaused(false);
+      }}
+    >
+      <motion.div
+        className="testimonials-heading"
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div>
+          <p className="hero-kicker testimonials-eyebrow">Kind words</p>
+          <h2 className="testimonials-title">Built on trust.<br /><span>Backed by people.</span></h2>
+        </div>
+        <p className="testimonials-intro">Good work is about more than what goes live. It’s about the people, collaboration, and care behind it.</p>
+      </motion.div>
+
+      <div className="testimonials-stage" aria-live="off">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeIndex}
+            className="testimonials-grid"
+            initial={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 42 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: -42 }}
+            transition={{ duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {visibleTestimonials.map((testimonial, cardIndex) => (
+              <motion.article
+                className={`testimonial-card testimonial-card--${cardIndex + 1}`}
+                key={testimonial.name}
+                animate={reduceMotion ? undefined : { y: [0, cardIndex === 1 ? 10 : -9, 0] }}
+                transition={reduceMotion ? undefined : {
+                  y: { duration: 4.8 + cardIndex * 0.8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: cardIndex * 0.45 },
+                }}
+              >
+                <div className="testimonial-card-top">
+                  <span className="testimonial-mark" aria-hidden="true">“</span>
+                  <span className="testimonial-count">{String(((activeIndex + cardIndex) % total) + 1).padStart(2, "0")} / 07</span>
+                </div>
+                <p className="testimonial-quote">{testimonial.quote}</p>
+                <div className="testimonial-card-bottom">
+                  <div className="testimonial-avatar" aria-hidden="true">{testimonial.name.charAt(0)}</div>
+                  <div className="testimonial-person">
+                    <h3>{testimonial.name}</h3>
+                    <p>{testimonial.project}</p>
+                    <span>{testimonial.service}</span>
+                  </div>
+                  <span className="testimonial-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </span>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="testimonials-controls">
+        <p className="hero-index">CLIENT NOTES <span>— {String(activeIndex + 1).padStart(2, "0")} TO {String(Math.min(activeIndex + 3, total)).padStart(2, "0")}</span></p>
+        <div className="testimonials-pagination" role="group" aria-label="Choose testimonial set">
+          {TESTIMONIALS.map((testimonial, index) => (
+            <button
+              key={testimonial.name}
+              type="button"
+              className={`testimonial-dot${index === activeIndex ? " is-active" : ""}`}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Show testimonials starting with ${testimonial.name}`}
+              aria-pressed={index === activeIndex}
+            />
+          ))}
+        </div>
+        <div className="testimonials-arrows">
+          <button type="button" onClick={() => move(-1)} aria-label="Previous testimonials" className="testimonial-nav">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12 8H4m0 0 4-4m-4 4 4 4" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <button type="button" onClick={() => move(1)} aria-label="Next testimonials" className="testimonial-nav">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8m0 0L8 4m4 4-4 4" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+        </div>
+      </div>
+      <p className="testimonials-note">Testimonials are shown as supplied or approved by each client.</p>
+    </section>
   );
 }
 
