@@ -860,3 +860,10 @@ a { color: inherit; text-decoration: none; }
 .site-wordmark span { color:var(--accent); }
 .footer-wordmark { font-family:Georgia, "Times New Roman", serif; font-weight:500; letter-spacing:-.065em; }
 @media (max-width:380px) { .site-wordmark { font-size:14px; } }
+
+
+/* Consistent external-link SVG arrows in the footer */
+.footer-external-arrow { display:inline-block; flex:0 0 13px; width:13px; height:13px; color:#7d896f; vertical-align:middle; transition:transform .2s ease,color .2s ease; }
+.footer-email-link:hover .footer-external-arrow,.footer-nav-group>a:hover .footer-external-arrow { color:#59644f; transform:translate(2px,-2px); }
+.footer-email-link { gap:9px; }
+.footer-nav-group>a { gap:7px; }
