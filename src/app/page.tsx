@@ -366,10 +366,41 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
           </a>
         </div>
       </motion.section>
-      <footer className="hero-shell portfolio-footer">
-        <a className="footer-wordmark" href="#top" aria-label="Back to top">ABILLS<span>.</span></a>
-        <p>Thoughtful digital work, made with intention.</p>
-        <span className="footer-copyright">© {year} Emmanuel Adeyemi</span>
+      <footer className="portfolio-footer">
+        <div className="footer-upper hero-shell">
+          <div className="footer-brand-block">
+            <a className="footer-wordmark" href="#top" aria-label="Back to top">ABILLS<span>.</span></a>
+            <p>Digital experiences built with clarity, creativity, and intention.</p>
+            <a className="footer-email-link" href="mailto:adedamolabills@gmail.com">adedamolabills@gmail.com <span aria-hidden="true">↗</span></a>
+          </div>
+          <nav className="footer-nav-group" aria-label="Explore portfolio">
+            <h3>EXPLORE</h3>
+            <a href="#projects">Selected work</a>
+            <a href="#about">About me</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Client notes</a>
+          </nav>
+          <nav className="footer-nav-group" aria-label="Connect on social media">
+            <h3>FOLLOW ALONG</h3>
+            <a href="https://www.instagram.com/emmanuelcreativehub/" target="_blank" rel="noreferrer">Instagram <span>↗</span></a>
+            <a href="https://www.tiktok.com/@abillscreates" target="_blank" rel="noreferrer">TikTok <span>↗</span></a>
+            <a href="https://www.threads.com/@emmanuelcreativehub" target="_blank" rel="noreferrer">Threads <span>↗</span></a>
+            <a href="https://x.com/iamabills" target="_blank" rel="noreferrer">X / Twitter <span>↗</span></a>
+            <a href="https://www.linkedin.com/in/emmanuelcreates" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+            <a href="https://www.facebook.com/share/1Eb5Hx5Ec2/" target="_blank" rel="noreferrer">Facebook <span>↗</span></a>
+          </nav>
+          <nav className="footer-nav-group footer-contact-group" aria-label="Get in touch">
+            <h3>GET IN TOUCH</h3>
+            <a href="mailto:adedamolabills@gmail.com">Email me <span>↗</span></a>
+            <a href="https://wa.me/2349157448456" target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a>
+            <p>Available for select projects and thoughtful collaborations.</p>
+          </nav>
+        </div>
+        <div className="footer-bottom hero-shell">
+          <span>© {year} Emmanuel Adeyemi</span>
+          <span>Designed with intention.</span>
+          <a href="#top">BACK TO TOP ↑</a>
+        </div>
       </footer>
     </>
   );
