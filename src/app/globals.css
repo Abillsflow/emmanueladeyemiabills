@@ -1190,3 +1190,51 @@ a { color: inherit; text-decoration: none; }
   .credibility-label { max-width:130px; font-size:10px; line-height:1.5; }
   .credibility-index { top:24px; right:8px; }
 }
+
+
+/* Scroll-gated testimonial timeline: each segment advances with its review set */
+.testimonial-timeline {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  width:100%;
+  margin:28px 0 -18px;
+  padding:0;
+}
+.testimonial-timeline-segment {
+  position:relative;
+  display:block;
+  flex:1 1 0;
+  height:2px;
+  overflow:hidden;
+  border-radius:99px;
+  background:rgba(108,116,96,.17);
+}
+.testimonial-timeline-fill {
+  position:absolute;
+  inset:0;
+  display:block;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:#8a9879;
+}
+.testimonial-timeline-segment.is-complete .testimonial-timeline-fill { transform:scaleX(1); }
+.testimonial-timeline-segment.is-current .testimonial-timeline-fill { transform:scaleX(0); }
+.testimonials-section.is-in-view:not(.is-paused) .testimonial-timeline-segment.is-current .testimonial-timeline-fill {
+  animation:testimonial-timeline-draw 6.2s linear forwards;
+}
+.testimonials-section.is-paused .testimonial-timeline-segment.is-current .testimonial-timeline-fill,
+.testimonials-section:not(.is-in-view) .testimonial-timeline-segment.is-current .testimonial-timeline-fill {
+  animation-play-state:paused;
+}
+@keyframes testimonial-timeline-draw {
+  from { transform:scaleX(0); }
+  to { transform:scaleX(1); }
+}
+@media(max-width:680px) {
+  .testimonial-timeline { gap:5px; margin:22px 0 -16px; }
+  .testimonial-timeline-segment { height:2px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .testimonials-section.is-in-view .testimonial-timeline-segment.is-current .testimonial-timeline-fill { animation:none; transform:scaleX(1); }
+}
