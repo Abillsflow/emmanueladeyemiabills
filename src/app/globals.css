@@ -1301,3 +1301,28 @@ section[id] {
   .nav-name-logo-wrap { flex-basis:40px; width:40px; height:30px; }
   .nav-name-copy { font-size:11px; }
 }
+
+
+/* Logo-only navbar: remove accompanying name and tagline cleanly */
+.portfolio-nav .nav-name {
+  gap:0 !important;
+}
+.portfolio-nav .nav-name-logo-wrap {
+  flex-basis:104px;
+  width:104px;
+  height:54px;
+}
+@media(max-width:760px) {
+  .portfolio-nav .nav-name-logo-wrap {
+    flex-basis:76px;
+    width:76px;
+    height:42px;
+  }
+}
+@media(max-width:360px) {
+  .portfolio-nav .nav-name-logo-wrap {
+    flex-basis:66px;
+    width:66px;
+    height:38px;
+  }
+}
