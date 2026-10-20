@@ -780,7 +780,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
             >
               <span className="service-node" aria-hidden="true">{service.number}</span>
               <div className="service-entry-inner">
-                <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
+                <a className="service-image-wrap" href={`mailto:adedamolabills@gmail.com?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
                   <img src={service.image} alt={service.alt} loading="lazy" />
                   <span className="service-image-index">{service.number} <span>/ 03</span></span>
                   <span className="service-image-arrow" aria-hidden="true">
