@@ -14,7 +14,6 @@ function CountUp({ value, reducedMotion }: { value: string; reducedMotion: boole
   useEffect(() => {
     const node = counterRef.current;
     if (!node) return;
-    let frame = 0;
     let started = false;
     let animationFrame = 0;
     let observer: IntersectionObserver | undefined;
@@ -577,6 +576,8 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const total = TESTIMONIALS.length;
   const groupCount = isMobile ? total : Math.ceil(total / 3);
 
@@ -592,12 +593,20 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
   }, []);
 
   useEffect(() => {
-    if (reduceMotion || isPaused) return;
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting), { threshold: 0.25 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (reduceMotion || isPaused || !isInView) return;
     const timer = setInterval(() => {
       setActiveIndex((current) => (current + 1) % groupCount);
     }, 6200);
     return () => clearInterval(timer);
-  }, [reduceMotion, isPaused, groupCount]);
+  }, [reduceMotion, isPaused, isInView, groupCount]);
 
   const move = (direction: number) => {
     setActiveIndex((current) => (current + direction + groupCount) % groupCount);
@@ -609,8 +618,9 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
 
   return (
     <section
+      ref={sectionRef}
       id="testimonials"
-      className="hero-shell testimonials-section"
+      className={`hero-shell testimonials-section${isInView ? " is-in-view" : ""}${isPaused ? " is-paused" : ""}`}
       aria-label="Client testimonials"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -633,6 +643,13 @@ function TestimonialsCarousel({ reduceMotion }: { reduceMotion: boolean }) {
         <p className="testimonials-intro">Good work is about more than what goes live. It’s about the people, collaboration, and care behind it.</p>
       </motion.div>
 
+      <div className="testimonial-timeline" aria-label={`Review timeline, set ${activeIndex + 1} of ${groupCount}`}>
+        {Array.from({ length: groupCount }, (_, index) => (
+          <span className={`testimonial-timeline-segment${index < activeIndex ? " is-complete" : ""}${index === activeIndex ? " is-current" : ""}`} key={index}>
+            <i className="testimonial-timeline-fill" />
+          </span>
+        ))}
+      </div>
       <div className="testimonials-stage" aria-live="off">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
