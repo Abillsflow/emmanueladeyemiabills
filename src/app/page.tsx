@@ -240,6 +240,34 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section className="hero-shell credibility-section" aria-label="Experience at a glance">
+        <div className="credibility-heading">
+          <p className="hero-kicker">A little perspective</p>
+          <p className="credibility-intro">Good work, built with good people.</p>
+        </div>
+        <div className="credibility-grid">
+          {[
+            ["150+", "Projects completed"],
+            ["70+", "Clients served"],
+            ["45+", "Brands supported"],
+            ["15+", "Platforms & tools used"],
+          ].map(([number, label], index) => (
+            <motion.div
+              key={label}
+              className="credibility-stat"
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="credibility-number">{number}</span>
+              <span className="credibility-label">{label}</span>
+              <span className="credibility-index">0{index + 1}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       <section id="selected-projects" className="hero-shell projects-section">
         <div className="projects-heading">
           <div>
