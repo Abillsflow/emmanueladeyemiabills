@@ -208,9 +208,9 @@ export default function Home() {
           <motion.div {...reveal(0.42)} className="order-2 pb-3 md:order-1 md:pb-0">
             <p className="hero-script mb-4 text-[27px] text-[#777a70] sm:text-[32px]">Hello, I’m</p>
             <h1 className="hero-name">Emmanuel<br />Adeyemi<span style={{ color: "var(--accent)" }}>.</span></h1>
-            <p className="mt-5 text-[11px] font-semibold uppercase leading-[1.7] tracking-[.13em] text-[#69715f]">Web designer &<br />digital creator</p>
+            <p className="mt-5 text-[11px] font-semibold uppercase leading-[1.7] tracking-[.13em] text-[#69715f]">Freelance Webflow developer &<br />website designer</p>
             <p className="mt-5 max-w-[300px] text-[13px] leading-[1.8] text-[#777a70]">
-              I design and build thoughtful digital experiences that bring clarity to brands and turn good ideas into something real.
+              I build responsive Webflow websites, CMS experiences, and e-commerce storefronts for businesses in Nigeria and around the world.
             </p>
             <div className="mt-7 flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Based in Nigeria · Working worldwide</div>
           </motion.div>
@@ -333,7 +333,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--closedhq">
-              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.closedhq.com/" alt="ClosedHQ real estate marketplace website preview" loading="lazy" />
+              <img src="/images/Closedhq.PNG" alt="ClosedHQ real estate marketplace website preview" loading="lazy" />
               <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Real estate · Digital platform</span>
             </div>
@@ -358,7 +358,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--apex">
-              <img src="https://image.thum.io/get/width/1200/crop/760/noanimate/https://www.apexdispensingsystems.com/" alt="Apex Dispensing Systems website preview" loading="lazy" />
+              <img src="/images/apex.PNG" alt="Apex Dispensing Systems website preview" loading="lazy" />
               <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Industrial · Product website</span>
             </div>
@@ -518,7 +518,7 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="footer-bottom hero-shell">
           <span>© {year} Emmanuel Adeyemi</span>
           <span>Designed with intention.</span>
-          <a href="#top">BACK TO TOP ↑</a>
+          <a href="#home">BACK TO TOP ↑</a>
         </div>
       </footer>
     </>
@@ -721,74 +721,29 @@ const SERVICES = [
   {
     number: "01",
     category: "BUILD",
-    title: "Website Development",
-    description: "Responsive, carefully built websites that give your business a confident home online.",
+    title: "Webflow Development",
+    description: "Responsive Webflow websites built around your business goals, with a clear CMS structure, thoughtful interactions, and reliable performance.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
-    alt: "Freelancer working on a website at a clean desktop workspace",
-    tags: ["Webflow", "Responsive builds", "CMS"]
+    alt: "Web developer working on a website at a desktop workspace",
+    tags: ["Webflow", "CMS", "Responsive builds"]
   },
   {
     number: "02",
     category: "DESIGN",
     title: "Website Design & UI/UX",
-    description: "Clear visual systems and intuitive user journeys that make digital experiences feel effortless.",
+    description: "Clear visual direction and intuitive user journeys that help your brand communicate clearly and make it easier for visitors to take action.",
     image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=85",
-    alt: "Creative designer reviewing digital layouts at a workstation",
-    tags: ["Web design", "UI/UX", "Prototyping"]
+    alt: "Designer reviewing website layouts and user interface concepts",
+    tags: ["Website design", "UI/UX", "Prototyping"]
   },
   {
     number: "03",
-    category: "CREATE",
-    title: "No-Code App Development",
-    description: "Useful web apps, MVPs, and connected digital products built with no-code tools.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
-    alt: "Digital professional working across a laptop and online tools",
-    tags: ["MVPs", "Web apps", "Integrations"]
-  },
-  {
-    number: "04",
-    category: "CONNECT",
-    title: "Automation",
-    description: "Smarter workflows that connect your tools, cut repetitive tasks, and give your team time back.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
-    alt: "Creative team collaborating around a laptop in a modern workspace",
-    tags: ["Workflow design", "Integrations", "Process improvement"]
-  },
-  {
-    number: "05",
-    category: "GROW",
-    title: "Search Engine Optimization",
-    description: "Stronger technical foundations and on-page structure to help the right people find your business.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
-    alt: "Freelancer reviewing website analytics and performance",
-    tags: ["On-page SEO", "Technical foundations", "Content structure"]
-  },
-  {
-    number: "06",
-    category: "CREATE",
-    title: "AI UGC Video",
-    description: "Product-led, AI-assisted creator-style videos for brands that need fresh campaign content.",
-    image: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1200&q=85",
-    alt: "Content creator working on a video production setup",
-    tags: ["Product creative", "Social video", "Ad concepts"]
-  },
-  {
-    number: "07",
     category: "SELL",
-    title: "E-commerce",
-    description: "Storefronts and shopping experiences that present products beautifully and make buying simple.",
+    title: "E-commerce Website Design",
+    description: "Conversion-conscious online stores and product pages that present your products clearly and make the buying journey straightforward.",
     image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
-    alt: "Professional planning an online store and digital customer experience",
+    alt: "Business team planning an e-commerce customer experience",
     tags: ["Shopify", "Store design", "Product pages"]
-  },
-  {
-    number: "08",
-    category: "PROMOTE",
-    title: "Paid Advertising",
-    description: "Thoughtful campaign setup and creative direction to help brands reach relevant audiences.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
-    alt: "Digital marketer collaborating on campaign strategy at a desk",
-    tags: ["Campaign setup", "Creative testing", "Performance"]
   }
 ];
 
@@ -826,7 +781,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
               <div className="service-entry-inner">
                 <a className="service-image-wrap" href={`mailto:?subject=${encodeURIComponent("Project enquiry — " + service.title)}`} aria-label={`Enquire about ${service.title}`}>
                   <img src={service.image} alt={service.alt} loading="lazy" />
-                  <span className="service-image-index">{service.number} <span>/ 08</span></span>
+                  <span className="service-image-index">{service.number} <span>/ 03</span></span>
                   <span className="service-image-arrow" aria-hidden="true">
                     <svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </span>
@@ -859,7 +814,7 @@ function ServicesTimeline({ reduceMotion }: { reduceMotion: boolean }) {
           <p className="hero-kicker">Have a project in mind?</p>
           <h3>Let’s make it <span>happen.</span></h3>
         </div>
-        <a href="mailto:" className="services-cta-link">Start a conversation
+        <a href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry" className="services-cta-link">Start a conversation
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
       </motion.div>
