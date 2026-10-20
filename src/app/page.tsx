@@ -414,6 +414,7 @@ export default function Home() {
           <motion.div className="about-copy" initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}>
             <p>I’m a digital designer and creator who enjoys turning ideas into clear, thoughtful online experiences.</p>
             <p>From website design and Webflow development to e-commerce experiences, I bring design and practical thinking together to help brands show up with confidence online.</p>
+            <p>Based in Nigeria, I work with clients locally and worldwide.</p>
           </motion.div>
         </div>
         <div className="about-gallery">
