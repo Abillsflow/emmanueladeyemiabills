@@ -160,11 +160,10 @@ export default function Home() {
             <span className="nav-name-logo-wrap"><img className="nav-name-logo" src="/images/D4F1065C-C721-45BF-AC87-C984F2B7506E.png" alt="" /></span>
           </a>
           <div className="nav-links" aria-label="Portfolio sections">
-            <span className="nav-timeline-track" aria-hidden="true"><i className={`nav-timeline-progress section-${activeSection}`} /></span>
-            <a className={activeSection === "selected-projects" ? "is-active" : ""} href="#selected-projects"><span className="nav-step">01</span><span className="nav-link-label">Work</span></a>
-            <a className={activeSection === "about" ? "is-active" : ""} href="#about"><span className="nav-step">02</span><span className="nav-link-label">About</span></a>
-            <a className={activeSection === "services" ? "is-active" : ""} href="#services"><span className="nav-step">03</span><span className="nav-link-label">Services</span></a>
-            <a className={activeSection === "testimonials" ? "is-active" : ""} href="#testimonials"><span className="nav-step">04</span><span className="nav-link-label">Kind words</span></a>
+            <a className={activeSection === "selected-projects" ? "is-active" : ""} href="#selected-projects">Work</a>
+            <a className={activeSection === "about" ? "is-active" : ""} href="#about">About</a>
+            <a className={activeSection === "services" ? "is-active" : ""} href="#services">Services</a>
+            <a className={activeSection === "testimonials" ? "is-active" : ""} href="#testimonials">Kind words</a>
           </div>
           <div className="nav-actions">
             <span className="nav-availability"><i /> Open to projects</span>
