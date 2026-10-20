@@ -384,7 +384,7 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.23, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="project-visual project-visual--beyond">
-              <img src="/images/beyond%20barz.PNG" alt="Beyond Barz CIC website preview" loading="lazy" />
+              <Image src="/images/beyond%20barz.PNG" alt="Beyond Barz CIC website preview" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-image" />
               <span className="project-open" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
               <span className="project-visual-label">Community · Advocacy website</span>
             </div>
