@@ -1326,3 +1326,18 @@ section[id] {
     height:38px;
   }
 }
+
+
+/* Explicitly enforce the requested logo-only header, including cached markup */
+.portfolio-nav .nav-name-copy,
+.portfolio-nav .nav-name > .nav-name-copy,
+.portfolio-nav .nav-name small {
+  display:none !important;
+}
+.portfolio-nav .nav-name {
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  width:auto;
+  min-width:0;
+}
