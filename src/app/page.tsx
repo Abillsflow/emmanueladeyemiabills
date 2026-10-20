@@ -95,7 +95,7 @@ export default function Home() {
           <motion.span {...reveal(0.12)} className="hero-kicker">Digital designer & developer</motion.span>
           <motion.span {...reveal(0.18)} className="flex items-center gap-2 hero-kicker"><span className="hero-dot" /> Available for freelance</motion.span>
         </div>
-        <a className="hero-kicker sm:hidden hero-connect" href="mailto:">Let’s connect
+        <a className="hero-kicker sm:hidden hero-connect" href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Let’s connect
           <svg className="hero-connect-arrow" aria-hidden="true" viewBox="0 0 16 16" fill="none">
             <path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -199,7 +199,7 @@ export default function Home() {
             <p className="hero-kicker projects-eyebrow">A selection of recent work</p>
             <h2 className="projects-title">Selected <span>projects</span></h2>
           </div>
-          <a className="projects-all-link" href="mailto:">Have a project in mind? <span className="arrow-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span></a>
+          <a className="projects-all-link" href="mailto:adedamolabills@gmail.com?subject=Project%20enquiry">Have a project in mind? <span className="arrow-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg></span></a>
         </div>
 
         <div className="projects-grid">
@@ -369,13 +369,13 @@ function ContactSection({ reduceMotion }: { reduceMotion: boolean }) {
       <footer className="portfolio-footer">
         <div className="footer-upper hero-shell">
           <div className="footer-brand-block">
-            <a className="footer-wordmark" href="#top" aria-label="Back to top">ABILLS<span>.</span></a>
+            <a className="footer-wordmark" href="#home" aria-label="Emmanuel Adeyemi home">Emmanuel Adeyemi<span>.</span></a>
             <p>Digital experiences built with clarity, creativity, and intention.</p>
             <a className="footer-email-link" href="mailto:adedamolabills@gmail.com">adedamolabills@gmail.com <span aria-hidden="true">↗</span></a>
           </div>
           <nav className="footer-nav-group" aria-label="Explore portfolio">
             <h3>EXPLORE</h3>
-            <a href="#projects">Selected work</a>
+            <a href="#selected-projects">Selected work</a>
             <a href="#about">About me</a>
             <a href="#services">Services</a>
             <a href="#testimonials">Client notes</a>
